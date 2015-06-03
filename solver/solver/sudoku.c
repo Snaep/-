@@ -1,5 +1,6 @@
 #include "sudoku.h"
 #include "defaults.h"
+#include <math.h>
 
 wchar_t* ReadAllBytes( const wchar_t * file ) {
 	FILE *fptr;
@@ -23,7 +24,7 @@ wchar_t* ReadAllBytes( const wchar_t * file ) {
 }
 int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t delimiter ) {
 	TCHAR* file;
-	int i, j, rowindex, cellvalue, cellindex, k;
+	unsigned int i, j, rowindex, cellvalue, cellindex;
 	int retv;
 
 	//read file
@@ -62,7 +63,7 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 		sud->grid[i] = ( SudokuCell* ) malloc( sud->length * sizeof( SudokuCell ) );
 		if( sud->grid[i] == NULL ) goto CLEANUP;
 		//alle werte auf möglich setzen
-		for( j = 0; j < sud->length; j++ ) sud->grid[i] = ( SudokuCell ) -1;
+		for( j = 0; j < sud->length; j++ ) sud->grid[i][j] = ( SudokuCell ) -1;
 	}
 
 	//allocate contains helper
@@ -132,12 +133,12 @@ END:
 }
 
 int Sudoku_Validate( struct Sudoku* sud ) {
-	int i, j;
-	int contains_mask = 0;
+	unsigned int i, j;
+	unsigned long long contains_mask = 0;
 
 	//erstelle bitmaske 
 	//1 bei jedem möglichen bit
-	for( i = 1; i <= sud->length; i++ ) contains_mask |= ( 1 << i );
+	for( i = 1; i <= sud->length; i++ ) contains_mask |= ( 1ll << i );
 
 	for( i = 0; i < 3; i++ ) {
 		for( j = 0; j < sud->length; j++ ) {
@@ -165,15 +166,15 @@ void Sudoku_SetCell( struct Sudoku* sud, unsigned int x, unsigned int y, unsigne
 	for( i = 1; i <= sud->length; i++ ) sud->grid[y][x] &= ~( 1 << value );
 
 	//store value in contains
-	sud->contains[CONTAINS_COL][x] |= ( 1 << value );
-	sud->contains[CONTAINS_ROW][y] |= ( 1 << value );
-	sud->contains[CONTAINS_BOX][bi] |= ( 1 << value );
+	sud->contains[CONTAINS_COL][x] |= ( 1ll << value );
+	sud->contains[CONTAINS_ROW][y] |= ( 1ll << value );
+	sud->contains[CONTAINS_BOX][bi] |= ( 1ll << value );
 
 	//remove other cells possibility for value
 	//col / row
 	for( i = 0; i < sud->length; i++ ) {
-		sud->grid[y][i] &= ~( 1 << value );
-		sud->grid[i][x] &= ~( 1 << value );
+		sud->grid[y][i] &= ~( 1ll << value );
+		sud->grid[i][x] &= ~( 1ll << value );
 	}
 
 	//box
@@ -184,13 +185,13 @@ void Sudoku_SetCell( struct Sudoku* sud, unsigned int x, unsigned int y, unsigne
 	//invalidate possibility
 	for( j = y; j < y + sud->length_of_box; j++ ) {
 		for( i = x; i < x + sud->length_of_box; i++ ) {
-			sud->grid[j][i] &= ~( 1 << value );
+			sud->grid[j][i] &= ~( 1ll << value );
 		}
 	}
 }
 
 void Sudoku_Print( struct Sudoku* sud ) {
-	int i, j;
+	unsigned int i, j;
 
 	for( i = 0; i < sud->length; i++ ) {
 		if( i && i % sud->length_of_box == 0 ) {

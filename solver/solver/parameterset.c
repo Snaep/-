@@ -4,7 +4,7 @@
 int ParameterSet_Parse( struct ParameterSet* set , wchar_t** argv ) {
 	unsigned int i, j;
 
-	if( set == NULL ) return;
+	if( set == NULL ) return PARAMERROR_INVALIDARG;
 
 	set->solvertype = ( unsigned int ) -1;
 	set->strategies = 0;

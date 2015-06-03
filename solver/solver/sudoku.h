@@ -1,6 +1,8 @@
 #ifndef SUDOKU_H
 #define SUDOKU_H
 
+#include "defaults.h"
+
 //fix!
 //do not change.
 #define CELL_POSSIBLE 1
@@ -42,8 +44,14 @@ struct Sudoku {
 //1d2d\n
 int Sudoku_ParseFile( struct Sudoku* dest, const wchar_t* file, const wchar_t delimiter );
 
+//setzt eine Zelle im Sudoku auf den angegeben Wert
+//x,y: koordinate der zu setzenden Zelle
+//value: wert die die Zelle enthalten soll
+//ist value = 0 werden keine Änderungen vorgenommen
+void Sudoku_SetCell( struct Sudoku* sud, unsigned int x, unsigned int y, unsigned int value );
+
 //stellt das Sudoku auf der Konsole dar
-int Sudoku_Print( struct Sudoku* sud );
+void Sudoku_Print( struct Sudoku* sud );
 
 //prüft ob das Sudoku gültig ist
 //0: gültig

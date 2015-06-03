@@ -2,7 +2,7 @@
 #define SOLVER_H
 
 struct Solver {
-
+	int a;
 };
 
 

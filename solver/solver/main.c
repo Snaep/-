@@ -5,14 +5,14 @@
 
 
 #ifdef _WIN32
-int _wmain( int argc, wchar_t* argv[] ) {
+int wmain( int argc, wchar_t* argv[] ) {
 #else
 int main( int argc, char* argv[] ) {
 	//convert to wchar_t
 #endif
 
 	struct ParameterSet params;
-	struct Solver solver;
+	//struct Solver solver;
 	struct Sudoku sudoku;
 
 	switch( ParameterSet_Parse( &params, argv ) ) {
@@ -40,10 +40,10 @@ int main( int argc, char* argv[] ) {
 		wprintf_s( L"unable to open/read file '%s'\n", params.filepath );
 		return EXIT_FAILURE;
 	case SUDOKUERROR_GRIDSIZE:
-		wprintf_s( "invalid gridsize\n" );
+		wprintf_s( L"invalid gridsize\n" );
 		return EXIT_FAILURE;
 	case SUDOKUERROR_PARSER:
-		wprintf_s( "parsing failed\n" );
+		wprintf_s( L"parsing failed\n" );
 		return EXIT_FAILURE;
 	case 0:
 #ifdef _DEBUG
@@ -52,6 +52,8 @@ int main( int argc, char* argv[] ) {
 		break;
 	}
 	
+	Sudoku_Print( &sudoku );
 
+	getchar();
 	return 0;
 }

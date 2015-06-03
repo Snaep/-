@@ -1,9 +1,12 @@
 #ifndef PARAMETERSET_H
 #define PARAMETERSET_H
 
+#include "defaults.h"
+
 #define PARAMERROR_NOSTRATEGIES (-1)
 #define PARAMERROR_NOSOLVER (-2)
 #define PARAMERROR_NOFILE (-3)
+#define PARAMERROR_INVALIDARG (-4)
 
 #define PARAMWARNING_NODELIMITER (1)
 
