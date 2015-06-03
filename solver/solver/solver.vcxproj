@@ -65,9 +65,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
+    <ClCompile Include="parameterset.c" />
+    <ClCompile Include="sudoku.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defaults.h" />
+    <ClInclude Include="parameterset.h" />
+    <ClInclude Include="sudoku.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

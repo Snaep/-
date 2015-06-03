@@ -24,10 +24,22 @@
     <ClCompile Include="main.c">
       <Filter>environment</Filter>
     </ClCompile>
+    <ClCompile Include="parameterset.c">
+      <Filter>parameterset</Filter>
+    </ClCompile>
+    <ClCompile Include="sudoku.c">
+      <Filter>sudoku</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defaults.h">
       <Filter>environment</Filter>
+    </ClInclude>
+    <ClInclude Include="parameterset.h">
+      <Filter>parameterset</Filter>
+    </ClInclude>
+    <ClInclude Include="sudoku.h">
+      <Filter>sudoku</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
