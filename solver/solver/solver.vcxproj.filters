@@ -41,5 +41,8 @@
     <ClInclude Include="sudoku.h">
       <Filter>sudoku</Filter>
     </ClInclude>
+    <ClInclude Include="solver.h">
+      <Filter>solver</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

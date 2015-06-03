@@ -71,6 +71,7 @@
   <ItemGroup>
     <ClInclude Include="defaults.h" />
     <ClInclude Include="parameterset.h" />
+    <ClInclude Include="solver.h" />
     <ClInclude Include="sudoku.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
