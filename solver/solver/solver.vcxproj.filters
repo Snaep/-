@@ -33,9 +33,6 @@
     <ClCompile Include="sudoku.c">
       <Filter>sudoku</Filter>
     </ClCompile>
-    <ClCompile Include="solver.c">
-      <Filter>solver</Filter>
-    </ClCompile>
     <ClCompile Include="rule1.c">
       <Filter>solver\rules\implementations</Filter>
     </ClCompile>
@@ -47,6 +44,9 @@
     </ClCompile>
     <ClCompile Include="rule0.c">
       <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="solver.c">
+      <Filter>solver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -47,7 +47,7 @@ int ParameterSet_Parse( struct ParameterSet* set , wchar_t** argv ) {
 				j += argv[i][4] - _T( '0' );
 			}
 
-			set->strategies |= j;
+			set->strategies |= ( 1 << j );
 			break;
 		default:
 			wprintf( L"Unknown parameter: '%s'\nfound at position: %i", argv[i], i );

@@ -5,9 +5,15 @@
 
 typedef int( *RULE )( struct Sudoku* sud, int x, int y );
 
+//--------------------------------------------------------------
+//add rules here
+
+
 int rule0( struct Sudoku* sud, unsigned int x, unsigned int y );
 int rule1( struct Sudoku* sud, unsigned int x, unsigned int y );
 int rule2( struct Sudoku* sud, unsigned int x, unsigned int y );
 int rule3( struct Sudoku* sud, unsigned int x, unsigned int y );
 
+
+//---------------------------------------------------------------
 #endif

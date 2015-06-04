@@ -24,6 +24,7 @@ int main( int argc, char* argv[] ) {
 	struct ParameterSet params;
 	struct Solver solver;
 	struct Sudoku sudoku;
+	int rc;
 
 	switch( ParameterSet_Parse( &params, argv ) ) {
 	case PARAMERROR_NOFILE:
@@ -66,8 +67,25 @@ int main( int argc, char* argv[] ) {
 	wprintf_s( L"_DEBUG: parsed file:\n" );
 	Sudoku_Print( &sudoku );
 #endif
+	
+	if( Solver_Initialize( &solver, &sudoku, params.strategies, params.solvertype ) != 0 ) {
+		wprintf_s( L"error initializing solver\n" );
+		return EXIT_FAILURE;
+	}
 
-	solver
+	rc = Solver_Solve( &solver );
+#ifdef _DEBUG
+	wprintf_s( L"_DEBUG: solve returned: %i\n\ncurrent grid:\n", rc );
+	Sudoku_Print( &sudoku );
+#endif
 
-	return 0;
+
+	rc = ( Sudoku_Validate( &sudoku ) != 0 );
+
+#ifdef _DEBUG
+	if( rc == 0 ) wprintf_s( L"validation successful.\n" );
+	else wprintf_s( L"validation failed.\n" );
+#endif
+
+	return rc;
 }
