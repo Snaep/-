@@ -2,12 +2,12 @@
 #include "defaults.h"
 #include <math.h>
 
-wchar_t* ReadAllBytes( const wchar_t * file ) {
+unsigned char* ReadAllBytes( const wchar_t * file ) {
 	FILE *fptr;
 	long len;
-	wchar_t* retv;
+	unsigned char* retv;
 
-	if( _wfopen_s( &fptr, file, _T( "r" ) ) != 0 ) return NULL;
+	if( _wfopen_s( &fptr, file, L"r" ) != 0 ) return NULL;
 
 	fseek( fptr, 0, SEEK_END );
 	len = ftell( fptr );
@@ -23,7 +23,7 @@ wchar_t* ReadAllBytes( const wchar_t * file ) {
 	return retv;
 }
 int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t delimiter ) {
-	TCHAR* file;
+	unsigned char* file;
 	unsigned int i, j, rowindex, cellvalue, cellindex;
 	int retv;
 
@@ -36,7 +36,7 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 	retv = SUDOKUERROR_PARSER;
 
 	//determine grid size by counting occurences of delimiter in first row
-	for( i = 0; file[i] != L'\n'; i++ ) {
+	for( i = 0; file[i] != '\n'; i++ ) {
 		if( file[i] == delimiter ) sud->length++;
 	}
 
@@ -64,6 +64,8 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 		if( sud->grid[i] == NULL ) goto CLEANUP;
 		//alle werte auf möglich setzen
 		for( j = 0; j < sud->length; j++ ) sud->grid[i][j] = ( SudokuCell ) -1;
+
+		sud->cellvalue[i] = ( SudokuCell* ) calloc( sud->length, sizeof( SudokuCell ) );
 	}
 
 	//allocate contains helper
@@ -77,7 +79,7 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 	rowindex = 0;
 
 	//parse grid
-	for( i = 0; file[i] != L'\0'; i++ ) {
+	for( i = 0; file[i] != '\0'; i++ ) {
 		//if current tchar is delimiter, finish cell
 		if( file[i] == delimiter ) {
 			Sudoku_SetCell( sud, cellindex++, rowindex, cellvalue );
@@ -88,12 +90,12 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 			}
 			cellvalue = 0;
 			//if current tchar is end of line increment rowindex
-		} else if( file[i] == L'\n' ) {
+		} else if( file[i] == '\n' ) {
 			rowindex++;
 			//if current tchar is not ctrl tchar, parse as cell content
 		} else {
 			cellvalue *= 10;
-			cellvalue += file[i] - L'0';
+			cellvalue += file[i] - '0';
 		}
 	}
 
@@ -193,16 +195,17 @@ void Sudoku_SetCell( struct Sudoku* sud, unsigned int x, unsigned int y, unsigne
 void Sudoku_Print( struct Sudoku* sud ) {
 	unsigned int i, j;
 
+	printf( "\r\n  " );
 	for( i = 0; i < sud->length; i++ ) {
 		if( i && i % sud->length_of_box == 0 ) {
-			printf( "--------------------\r\n" );
+			printf( "--------------------\r\n  " );
 		}
 		for( j = 0; j < sud->length; j++ ) {
 			if( j && j % sud->length_of_box == 0 ) printf( "|" );
 			if( sud->cellvalue[i][j] != 0 ) printf( " %i", sud->cellvalue[i][j] );
 			else printf( "  " );
 		}
-		printf( "\r\n" );
+		printf( "\r\n  " );
 	}
-	printf( "\r\n-----------------------------------\r\n\r\n" );
+	printf( "\r\n------------------------\r\n\r\n" );
 }

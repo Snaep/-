@@ -5,7 +5,17 @@
 
 
 #ifdef _WIN32
+#ifdef _DEBUG
+int run( int arc, wchar_t* argv[] );
 int wmain( int argc, wchar_t* argv[] ) {
+	wprintf_s( L"\n\nsolver returned: %i\n", run( argc, argv ) );
+	getchar();
+	return 0;
+}
+int run(int argc, wchar_t* argv[]) {
+#else
+	int wmain( int argc, wchar_t* argv[] ) {
+#endif
 #else
 int main( int argc, char* argv[] ) {
 	//convert to wchar_t
@@ -17,7 +27,7 @@ int main( int argc, char* argv[] ) {
 
 	switch( ParameterSet_Parse( &params, argv ) ) {
 	case PARAMERROR_NOFILE:
-		wprintf_s( L"no sudoku file\n" );
+		wprintf_s( L"no sudoku file specified\n" );
 		return EXIT_FAILURE;
 	case PARAMERROR_NOSOLVER:
 		wprintf_s( L"no solver specified\n" );
@@ -26,11 +36,11 @@ int main( int argc, char* argv[] ) {
 		wprintf_s( L"no strategies specified\n" );
 		return EXIT_FAILURE;
 	case PARAMWARNING_NODELIMITER:
-		wprintf_s( L"no delimiter specified\nfallback to ' '\n" );
+		wprintf_s( L"no delimiter specified, fallback to ' '\n" );
 		break;
 	case 0:
 #ifdef _DEBUG
-		wprintf_s( L"parameter parser succeeded\n" );
+		wprintf_s( L"_DEBUG:parameter parser succeeded\n" );
 #endif
 		break;
 	}
@@ -47,13 +57,17 @@ int main( int argc, char* argv[] ) {
 		return EXIT_FAILURE;
 	case 0:
 #ifdef _DEBUG
-		wprintf_s( L"sudoku parser succeeded\n" );
+		wprintf_s( L"_DEBUG:sudoku parser succeeded\n" );
 #endif
 		break;
 	}
 	
+#ifdef _DEBUG
+	wprintf_s( L"_DEBUG: parsed file:\n" );
 	Sudoku_Print( &sudoku );
+#endif
 
-	getchar();
+
+
 	return 0;
 }
