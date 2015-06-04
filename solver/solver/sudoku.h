@@ -49,6 +49,10 @@ struct Sudoku {
 //1d2d\n
 int Sudoku_ParseFile( struct Sudoku* dest, const wchar_t* file, const wchar_t delimiter );
 
+
+//Diese Funktion sollte nicht direkt aufgerufen werden
+//die Sudoku instanz enthält eine Funktion
+//welche vom solver entsprechend der parallelisierung gewählt wird
 //setzt eine Zelle im Sudoku auf den angegeben Wert
 //x,y: koordinate der zu setzenden Zelle
 //value: wert die die Zelle enthalten soll
