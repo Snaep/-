@@ -16,8 +16,11 @@
     <Filter Include="parameterset">
       <UniqueIdentifier>{547c2926-d4df-4269-aa3f-a6601c769a95}</UniqueIdentifier>
     </Filter>
-    <Filter Include="solver\strategies">
+    <Filter Include="solver\rules">
       <UniqueIdentifier>{c7cb79a6-2441-4d14-8026-df8b104aea0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="solver\rules\implementations">
+      <UniqueIdentifier>{c51c80c5-3d64-4901-b894-02d91b01583b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -29,6 +32,21 @@
     </ClCompile>
     <ClCompile Include="sudoku.c">
       <Filter>sudoku</Filter>
+    </ClCompile>
+    <ClCompile Include="solver.c">
+      <Filter>solver</Filter>
+    </ClCompile>
+    <ClCompile Include="rule1.c">
+      <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="rule2.c">
+      <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="rule3.c">
+      <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="rule0.c">
+      <Filter>solver\rules\implementations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="solver.h">
       <Filter>solver</Filter>
+    </ClInclude>
+    <ClInclude Include="rules.h">
+      <Filter>solver\rules</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -31,6 +31,11 @@ struct Sudoku {
 	//1: Zahl ist enthalten
 	//0: Zahl ist nicht enthalten
 	unsigned long long* contains[3]; 
+
+	//funktion zum setzen einer Zelle
+	//wird vom Solver gesetzt
+	//abhängig vom parallelisierungsmode
+	void( *pSetCell )( struct Sudoku* sudoku, unsigned int x, unsigned int y, unsigned int value );
 };
 
 //liest eine datei ein und erstellt entsprechende sudoku instanz

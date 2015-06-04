@@ -14,4 +14,5 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include <intrin.h>
 #endif

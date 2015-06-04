@@ -22,7 +22,7 @@ int main( int argc, char* argv[] ) {
 #endif
 
 	struct ParameterSet params;
-	//struct Solver solver;
+	struct Solver solver;
 	struct Sudoku sudoku;
 
 	switch( ParameterSet_Parse( &params, argv ) ) {
@@ -67,7 +67,7 @@ int main( int argc, char* argv[] ) {
 	Sudoku_Print( &sudoku );
 #endif
 
-
+	solver
 
 	return 0;
 }
