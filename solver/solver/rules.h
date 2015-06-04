@@ -3,7 +3,7 @@
 
 #include "sudoku.h"
 
-typedef int( *RULE )( struct Sudoku* sud, int x, int y );
+typedef int( *RULE )( struct Sudoku* sud, unsigned int x, unsigned int y );
 
 //--------------------------------------------------------------
 //add rules here
