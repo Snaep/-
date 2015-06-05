@@ -42,8 +42,8 @@ int Solver_Initialize( struct Solver* solver, struct Sudoku* sudoku, int strateg
 
 int SolveSeq( struct Solver* solver ) {
 	int change;
-	int y, x;
-	int i;
+	unsigned int y, x;
+	unsigned int i;
 
 	do {
 		change = 0;

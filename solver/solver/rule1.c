@@ -3,7 +3,7 @@
 //prüft ob ein Wert innerhalb einer Spalte
 //nur in der aktuellen Zelle möglich ist
 int rule1( struct Sudoku* sud, unsigned int x, unsigned int y ) {
-	int i;
+	unsigned int i;
 	SudokuCell col;
 
 	col = 0;

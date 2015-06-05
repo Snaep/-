@@ -12,7 +12,7 @@ unsigned char* ReadAllBytes( const wchar_t * file ) {
 	fseek( fptr, 0, SEEK_END );
 	len = ftell( fptr );
 
-	retv = ( wchar_t* ) malloc( len * sizeof( wchar_t ) + sizeof( wchar_t ) );
+	retv = ( unsigned char* ) malloc( len * sizeof( unsigned char ) + sizeof( unsigned char ) );
 	if( retv != NULL ) {
 		fseek( fptr, 0, SEEK_SET );
 		fread( retv, 1, len, fptr );
@@ -65,7 +65,7 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 		//alle werte auf möglich setzen
 		for( j = 0; j < sud->length; j++ ) sud->grid[i][j] = ( SudokuCell ) -1;
 
-		sud->cellvalue[i] = ( SudokuCell* ) calloc( sud->length, sizeof( SudokuCell ) );
+		sud->cellvalue[i] = ( int* ) calloc( sud->length, sizeof( int ) );
 	}
 
 	//allocate contains helper
