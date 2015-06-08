@@ -21,6 +21,7 @@ int rule3 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 		{
 			iTemp = i;
 			sud->grid[i][x] &= ( sud->grid[y][x] ) & ( sud->grid[i][x] );
+			sud->grid[y][x] &= ( sud->grid[y][x] ) & ( sud->grid[i][x] );
 		}
 	}
 
