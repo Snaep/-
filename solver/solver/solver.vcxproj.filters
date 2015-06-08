@@ -54,6 +54,21 @@
     <ClCompile Include="stopwatch.c">
       <Filter>environment\Stopwatch</Filter>
     </ClCompile>
+    <ClCompile Include="rule6.c">
+      <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="rule4.c">
+      <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="rule7.c">
+      <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="rule8.c">
+      <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="rule5.c">
+      <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defaults.h">
