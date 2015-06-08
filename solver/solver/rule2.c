@@ -18,7 +18,7 @@ int rule2 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 	}
 
 	//Laufe durch die Kandiaten 
-	for ( i = 1; i < sud->length; i++ )
+	for ( i = 1; i <= sud->length; i++ )
 	{
 		//Wenn Kandidat gefunden
 		if ( sud->grid[y][x] & ( 1ll << i ) != 0 )
@@ -26,7 +26,10 @@ int rule2 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 			if ( ( box & ( 1ll << i ) == 0 ) )
 			{
 				sud->pSetCell ( sud, x, y, i );
+				return 1;
 			}
 		}
 	}
+
+	return 0;
 }
