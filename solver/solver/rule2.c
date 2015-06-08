@@ -13,7 +13,7 @@ int rule2 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 	{
 		if ( i != y )
 		{
-			box |= sud->cellbox[y][x][i];
+			box |= *sud->cellbox[y][x][i];
 		}
 	}
 
