@@ -27,6 +27,18 @@ struct Sudoku {
 	//0: leere Zelle
 	int** cellvalue;
 
+
+	//enthält die Möglichkeiten aus der zur Zelle gehörigen Box
+	//die Werte sind doppelt zu dem Feld cellvalue
+	//->dient zum einfachen Zugriff auf die zugehörige Box
+	//bsp 9x9:
+	//Box:
+	//[... 0 1 2 ...]
+	//[... 3 4 5 ...]
+	//[... 6 7 8 ...]
+	//=> cellboxvalue[y][x][0-9] = [0 1 2 3 4 5 6 7 8]
+	SudokuCell**** cellbox;
+	
 	//enthält die Werte aus der zur Zelle gehörigen Box
 	//die Werte sind doppelt zu dem Feld cellvalue
 	//->dient zum einfachen Zugriff auf die zugehörige Box
@@ -35,8 +47,8 @@ struct Sudoku {
 	//[... 0 1 2 ...]
 	//[... 3 4 5 ...]
 	//[... 6 7 8 ...]
-	//=> cellbox[y][x][0-9] = [0 1 2 3 4 5 6 7 8]
-	int*** cellbox;
+	//=> cellboxvalue[y][x][0-9] = [0 1 2 3 4 5 6 7 8]
+	unsigned int**** cellboxvalue;
 
 	unsigned int length;
 	unsigned int length_of_box;
@@ -82,5 +94,7 @@ void Sudoku_Print( struct Sudoku* sud );
 //0: gültig
 //-1: nicht gültig
 int Sudoku_Validate( struct Sudoku* sud );
+
+int Sudoku_SetPossibility(int x, int y, )
 
 #endif
