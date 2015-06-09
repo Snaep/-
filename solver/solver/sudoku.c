@@ -83,18 +83,18 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 
 	//allocate and set box helper
 	for( i = 0; i < sud->length; i++ ) {
-		sud->cellbox[i] = ( SudokuCell*** ) malloc( sizeof( SudokuCell** ) * sud->length );
+		sud->cellbox[i] = ( SudokuCell*** ) calloc( sud->length, sizeof( SudokuCell** ) );
 		if( sud->cellbox[i] == NULL ) goto CLEANUP;
 
-		sud->cellboxvalue[i] = ( unsigned int*** ) malloc( sizeof( unsigned int** ) * sud->length );
+		sud->cellboxvalue[i] = ( unsigned int*** ) calloc( sud->length, sizeof( unsigned int** ) );
 		if( sud->cellboxvalue[i] == NULL ) goto CLEANUP;
 
 		for( j = 0; j < sud->length; j++ ) {
 			//position (0,0) in box-> allocate
 			if( j % sud->length_of_box == 0 && i % sud->length_of_box == 0 ) {
-				sud->cellbox[i][j] = ( SudokuCell** ) malloc( sizeof( SudokuCell* ) * sud->length );
+				sud->cellbox[i][j] = ( SudokuCell** ) calloc( sud->length, sizeof( SudokuCell* ) );
 				if( sud->cellbox[i][j] == NULL ) goto CLEANUP;
-				sud->cellboxvalue[i][j] = ( unsigned int** ) malloc( sizeof( unsigned int* ) * sud->length );
+				sud->cellboxvalue[i][j] = ( unsigned int** ) calloc( sud->length, sizeof( unsigned int* ) );
 				if( sud->cellboxvalue[i][j] == NULL ) goto CLEANUP;
 			
 			//position (0,x) in box -> copy ptr from above cell)
