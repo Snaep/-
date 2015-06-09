@@ -82,7 +82,7 @@ int main( int argc, char* argv[] ) {
 	wprintf_s( L"_DEBUG: solve returned: %i\n\ncurrent grid:\n", rc );
 	Sudoku_Print( &sudoku );
 #endif
-	if( params.timer != 0 ) printf_s( "time solver: %.3fs\r\n", Stopwatch_GetTime() );
+	if( params.timer != 0 ) printf_s( "time solver: %.3fs\r\n", Stopwatch_GetTime( &stopwatch ) );
 
 	rc = ( Sudoku_Validate( &sudoku ) != 0 );
 

@@ -24,7 +24,7 @@ unsigned char* ReadAllBytes( const wchar_t * file ) {
 }
 int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t delimiter ) {
 	unsigned char* file;
-	unsigned int i, j, rowindex, cellvalue, cellindex, bi;
+	unsigned int i, j, rowindex, cellvalue, cellindex;
 	int retv;
 
 	//read file

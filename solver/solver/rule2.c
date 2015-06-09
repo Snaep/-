@@ -21,9 +21,9 @@ int rule2 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 	for ( i = 1; i <= sud->length; i++ )
 	{
 		//Wenn Kandidat gefunden
-		if ( sud->grid[y][x] & ( 1ll << i ) != 0 )
+		if ( (sud->grid[y][x] & ( 1ll << i )) != 0 )
 		{
-			if ( ( box & ( 1ll << i ) == 0 ) )
+			if ( ( box & ( 1ll << i ) ) == 0 )
 			{
 				sud->pSetCell ( sud, x, y, i );
 				return 1;

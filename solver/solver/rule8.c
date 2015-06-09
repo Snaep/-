@@ -21,9 +21,6 @@ int rule8 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 			}
 		}
 	}
-	else
-	{
-		return 0;
-	}
 
+	return 0;
 }
