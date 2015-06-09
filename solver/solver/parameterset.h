@@ -26,6 +26,9 @@ struct ParameterSet {
 	//muss sich nach jedem Zeichen befinden
 	wchar_t delimiter;
 
+	//gibt an ob die Zeit für den Lösungsvorgang gestoppt werden soll
+	unsigned int timer;
+
 	//Dateipfad zum Sudoku
 	wchar_t filepath[512];
 };

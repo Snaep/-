@@ -2,7 +2,7 @@
 #include "parameterset.h"
 #include "solver.h"
 #include "sudoku.h"
-
+#include "stopwatch.h"
 
 #ifdef _WIN32
 #ifdef _DEBUG
@@ -12,9 +12,9 @@ int wmain( int argc, wchar_t* argv[] ) {
 	getchar();
 	return 0;
 }
-int run(int argc, wchar_t* argv[]) {
+int run( int argc, wchar_t* argv[] ) {
 #else
-	int wmain( int argc, wchar_t* argv[] ) {
+int wmain( int argc, wchar_t* argv[] ) {
 #endif
 #else
 int main( int argc, char* argv[] ) {
@@ -24,6 +24,7 @@ int main( int argc, char* argv[] ) {
 	struct ParameterSet params;
 	struct Solver solver;
 	struct Sudoku sudoku;
+	struct Stopwatch stopwatch;
 	int rc;
 
 	switch( ParameterSet_Parse( &params, argv ) ) {
@@ -46,6 +47,7 @@ int main( int argc, char* argv[] ) {
 		break;
 	}
 
+	if( params.timer != 0 ) Stopwatch_Start( &stopwatch );
 	switch( Sudoku_ParseFile( &sudoku, params.filepath, params.delimiter ) ) {
 	case SUDOKUERROR_FILE:
 		wprintf_s( L"unable to open/read file '%s'\n", params.filepath );
@@ -62,23 +64,25 @@ int main( int argc, char* argv[] ) {
 #endif
 		break;
 	}
-	
+	if( params.timer != 0 ) printf( "time sudokuparser: %.3f\r\n", Stopwatch_GetTime( &stopwatch ) );
+
 #ifdef _DEBUG
 	wprintf_s( L"_DEBUG: parsed file:\n" );
 	Sudoku_Print( &sudoku );
 #endif
-	
+
 	if( Solver_Initialize( &solver, &sudoku, params.strategies, params.solvertype ) != 0 ) {
 		wprintf_s( L"error initializing solver\n" );
 		return EXIT_FAILURE;
 	}
 
+	if( params.timer != 0 ) Stopwatch_Start( &stopwatch );
 	rc = Solver_Solve( &solver );
 #ifdef _DEBUG
 	wprintf_s( L"_DEBUG: solve returned: %i\n\ncurrent grid:\n", rc );
 	Sudoku_Print( &sudoku );
 #endif
-
+	if( params.timer != 0 ) printf_s( "time solver: %.3fs\r\n", Stopwatch_GetTime() );
 
 	rc = ( Sudoku_Validate( &sudoku ) != 0 );
 

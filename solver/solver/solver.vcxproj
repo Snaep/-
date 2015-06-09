@@ -71,6 +71,7 @@
     <ClCompile Include="rule2.c" />
     <ClCompile Include="rule3.c" />
     <ClCompile Include="solver.c" />
+    <ClCompile Include="stopwatch.c" />
     <ClCompile Include="sudoku.c" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +80,7 @@
     <ClInclude Include="rules.h" />
     <ClInclude Include="solver.h" />
     <ClInclude Include="sudoku.h" />
+    <ClInclude Include="stopwatch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

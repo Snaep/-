@@ -86,6 +86,7 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 			//position (0,0) in box-> allocate
 			if( j % sud->length_of_box == 0 && i % sud->length_of_box == 0 ) {
 				sud->cellbox[i][j] = ( int* ) malloc( sizeof( int ) * sud->length );
+				if( sud->cellbox[i][j] == NULL ) goto CLEANUP;
 			
 			//position (0,x) in box -> copy ptr from above cell)
 			} else if( j % sud->length_of_box == 0 ) {
@@ -144,6 +145,19 @@ CLEANUP:
 			}
 			free( sud->cellvalue );
 		}
+
+		if( sud->cellbox != NULL ) {
+			for( i = 0; i < sud->length; i += sud->length_of_box ) {
+				if( sud->cellbox[i] != NULL ) {
+					for( j = 0; j < sud->length; j += sud->length_of_box ) {
+						if( sud->cellbox[i][j] != NULL ) free( sud->cellbox[i][j] );
+					}
+					free( sud->cellbox[i] );
+				}
+			}
+			free( sud->cellbox );
+		}
+
 		//free contains grid
 		for( i = 0; i < 3; i++ ) {
 			if( sud->contains[i] != NULL ) free( sud->contains[i] );
@@ -183,10 +197,11 @@ void Sudoku_SetCell( struct Sudoku* sud, unsigned int x, unsigned int y, unsigne
 
 	if( value == 0 ) return;
 
+	bi = ( y / sud->length_of_box ) * sud->length_of_box + x / sud->length_of_box;
+
 	//store value in grid
 	sud->cellvalue[y][x] = value;
-
-	bi = ( y / sud->length_of_box ) * sud->length_of_box + x / sud->length_of_box;
+	sud->cellbox[y][x][bi] = value;
 
 	//set all other values to impossible
 	for( i = 1; i <= sud->length; i++ ) sud->grid[y][x] &= ~( 1 << value );
@@ -195,7 +210,7 @@ void Sudoku_SetCell( struct Sudoku* sud, unsigned int x, unsigned int y, unsigne
 	sud->contains[CONTAINS_COL][x] |= ( 1ll << value );
 	sud->contains[CONTAINS_ROW][y] |= ( 1ll << value );
 	sud->contains[CONTAINS_BOX][bi] |= ( 1ll << value );
-
+	
 	//remove other cells possibility for value
 	//col / row
 	for( i = 0; i < sud->length; i++ ) {

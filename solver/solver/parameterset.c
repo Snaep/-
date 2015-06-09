@@ -10,6 +10,7 @@ int ParameterSet_Parse( struct ParameterSet* set , wchar_t** argv ) {
 	set->strategies = 0;
 	set->filepath[0] = 0;
 	set->delimiter = 0;
+	set->timer = 0;
 
 	i = ( unsigned int ) -1;
 	while( argv[++i] != NULL ) {
@@ -39,6 +40,9 @@ int ParameterSet_Parse( struct ParameterSet* set , wchar_t** argv ) {
 			break;
 		case L'd':
 			set->delimiter = argv[i][5];
+			break;
+		case L'i':
+			set->timer = 1;
 			break;
 		case L't': //st
 			j = argv[i][3] - L'0';

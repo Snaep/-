@@ -22,6 +22,9 @@
     <Filter Include="solver\rules\implementations">
       <UniqueIdentifier>{c51c80c5-3d64-4901-b894-02d91b01583b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="environment\Stopwatch">
+      <UniqueIdentifier>{61634a45-7009-45ee-9760-5876adf0d9e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -48,6 +51,9 @@
     <ClCompile Include="solver.c">
       <Filter>solver</Filter>
     </ClCompile>
+    <ClCompile Include="stopwatch.c">
+      <Filter>environment\Stopwatch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defaults.h">
@@ -64,6 +70,9 @@
     </ClInclude>
     <ClInclude Include="rules.h">
       <Filter>solver\rules</Filter>
+    </ClInclude>
+    <ClInclude Include="stopwatch.h">
+      <Filter>environment\Stopwatch</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
