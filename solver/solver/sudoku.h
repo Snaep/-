@@ -18,9 +18,23 @@
 
 typedef unsigned long long SudokuCell;
 
+#define MAKELONG(l, h)      ((LONG)(((WORD)(((DWORD_PTR)(l)) & 0xffff)) | ((DWORD)((WORD)(((DWORD_PTR)(h)) & 0xffff))) << 16))
+#define LOWORD(l)           ((WORD)(((DWORD_PTR)(l)) & 0xffff))
+#define HIWORD(l)           ((WORD)((((DWORD_PTR)(l)) >> 16) & 0xffff))
+
 struct Sudoku {
+	//enthält Möglichkeiten für Zelle
+	//Bit an Position (1 << Zahl) ist 1 wenn möglich, 0 wenn nicht
 	SudokuCell** grid;
+
+	//enthält aktuelle Zahl der Zelle
+	//0: leere Zelle
 	int** cellvalue;
+
+	//enthält die Werte aus der zur Zelle gehörigen Box
+	//die Werte sind doppelt zu dem Feld cellvalue
+	//->dient zum einfachen Zugriff auf die zugehörige Box
+	int*** cellgrid;
 
 	unsigned int length;
 	unsigned int length_of_box;

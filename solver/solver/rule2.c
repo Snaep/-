@@ -1,5 +1,7 @@
 #include "rules.h"
 
-int rule2( struct Sudoku* sudoku, unsigned int x, unsigned int y ) {
-	return 0;
+//prüft ob ein Wert innerhalb einer Box
+//nur in der aktuellen Zelle möglich ist
+int rule2( struct Sudoku* sud, unsigned int x, unsigned int y ) {
+	
 }
