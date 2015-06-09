@@ -74,19 +74,19 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 		if( sud->contains[i] == NULL ) goto CLEANUP;
 	}
 
-	sud->cellgrid = ( int*** ) calloc( sud->length, sizeof( int** ) );
-	if( sud->cellgrid == NULL ) goto CLEANUP;
+	sud->cellbox = ( int*** ) calloc( sud->length, sizeof( int** ) );
+	if( sud->cellbox == NULL ) goto CLEANUP;
 
 	//allocate and set box helper
 	for( i = 0; i < sud->length; i++ ) {
-		sud->cellgrid[i] = ( int** ) malloc( sizeof( int* ) * sud->length );
-		if( sud->cellgrid[i] == NULL ) goto CLEANUP;
+		sud->cellbox[i] = ( int** ) malloc( sizeof( int* ) * sud->length );
+		if( sud->cellbox[i] == NULL ) goto CLEANUP;
 
 		for( j = 0; j < sud->length; j++ ) {
 			if( j % sud->length_of_box == 0 ) {
-				sud->cellgrid[i]
+				sud->cellbox[i][j] = ( int* ) malloc( sizeof( int ) * sud->length );
 			} else {
-
+				sud->cellbox[i][j] = sud->cellbox[i][j - 1];
 			}
 		}
 	}

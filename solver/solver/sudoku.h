@@ -34,7 +34,7 @@ struct Sudoku {
 	//enthält die Werte aus der zur Zelle gehörigen Box
 	//die Werte sind doppelt zu dem Feld cellvalue
 	//->dient zum einfachen Zugriff auf die zugehörige Box
-	int*** cellgrid;
+	int*** cellbox;
 
 	unsigned int length;
 	unsigned int length_of_box;
