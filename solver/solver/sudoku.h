@@ -95,6 +95,4 @@ void Sudoku_Print( struct Sudoku* sud );
 //-1: nicht gültig
 int Sudoku_Validate( struct Sudoku* sud );
 
-int Sudoku_SetPossibility(int x, int y, )
-
 #endif
