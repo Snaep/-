@@ -83,8 +83,13 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 		if( sud->cellbox[i] == NULL ) goto CLEANUP;
 
 		for( j = 0; j < sud->length; j++ ) {
-			if( j % sud->length_of_box == 0 ) {
+			//position (0,0) in box-> allocate
+			if( j % sud->length_of_box == 0 && i % sud->length_of_box == 0 ) {
 				sud->cellbox[i][j] = ( int* ) malloc( sizeof( int ) * sud->length );
+			
+			//position (0,x) in box -> copy ptr from above cell)
+			} else if( j % sud->length_of_box == 0 ) {
+				sud->cellbox[i][j] = sud->cellbox[i - 1][j];
 			} else {
 				sud->cellbox[i][j] = sud->cellbox[i][j - 1];
 			}
@@ -115,6 +120,8 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 			cellvalue += file[i] - '0';
 		}
 	}
+
+
 
 	//skip cleanup
 	retv = 0;
