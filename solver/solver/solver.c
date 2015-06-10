@@ -51,7 +51,6 @@ int SolveSeq( struct Solver* solver ) {
 	unsigned int i;
 
 	do {
-		change = 0;
 
 		for( i = 0; i < solver->ctStrategies; i++ )//Loop trought rules
 		{
@@ -60,9 +59,9 @@ int SolveSeq( struct Solver* solver ) {
 				for( y = 0; y < solver->sudoku->length; y++ ) //Loop trought y positions
 				{
 					if( solver->sudoku->cellvalue[y][x] != 0 ) continue;
-					if( ( change += solver->rules[i]( solver->sudoku, x, y ) ) != 0 ) {
-						x = -1;
-						y = 0;
+					if( ( change = solver->rules[i]( solver->sudoku, x, y ) ) != 0 ) {
+						x = ( unsigned int ) -1;
+						y = ( unsigned int ) -1;
 						i = 0;
 						break;
 					}

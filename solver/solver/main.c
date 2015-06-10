@@ -64,7 +64,7 @@ int main( int argc, char* argv[] ) {
 #endif
 		break;
 	}
-	if( params.timer != 0 ) printf( "time sudokuparser: %.3f\r\n", Stopwatch_GetTime( &stopwatch ) );
+	if( params.timer != 0 ) printf( "time sudokuparser: %.3fms\r\n", Stopwatch_GetTime( &stopwatch ) * 1000 );
 
 #ifdef _DEBUG
 	wprintf_s( L"_DEBUG: parsed file:\n" );
@@ -82,7 +82,7 @@ int main( int argc, char* argv[] ) {
 	wprintf_s( L"_DEBUG: solve returned: %i\n\ncurrent grid:\n", rc );
 	Sudoku_Print( &sudoku );
 #endif
-	if( params.timer != 0 ) printf_s( "time solver: %.3fs\r\n", Stopwatch_GetTime( &stopwatch ) );
+	if( params.timer != 0 ) printf_s( "time solver: %.3fms\r\n", Stopwatch_GetTime( &stopwatch ) * 1000 );
 
 	rc = ( Sudoku_Validate( &sudoku ) != 0 );
 
