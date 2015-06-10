@@ -90,6 +90,6 @@ int main( int argc, char* argv[] ) {
 	if( rc == 0 ) wprintf_s( L"validation successful.\n" );
 	else wprintf_s( L"validation failed.\n" );
 #endif
-
+	
 	return rc;
 }

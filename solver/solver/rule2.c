@@ -9,10 +9,8 @@ int rule2 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 
 	box = 0;
 	//Erzeuge Bitvektor aus aktueller Box
-	for ( i = 0; i < sud->length_of_box; i++ )
-	{
-		if ( i != y )
-		{
+	for ( i = 0; i < sud->length; i++ ) {
+		if( sud->cellbox[y][x][i] != &sud->grid[y][x] ) {
 			box |= *sud->cellbox[y][x][i];
 		}
 	}

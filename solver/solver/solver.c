@@ -49,9 +49,12 @@ int SolveSeq( struct Solver* solver ) {
 	int change;
 	unsigned int y, x;
 	unsigned int i;
+	unsigned int sc;
+
 
 	do {
 		change = 0;
+		sc = 0;
 
 		for( i = 0; i < solver->ctStrategies; i++ )//Loop trought rules
 		{
@@ -62,17 +65,16 @@ int SolveSeq( struct Solver* solver ) {
 					if( solver->sudoku->cellvalue[y][x] != 0 ) continue;
 					if( ( change = solver->rules[i]( solver->sudoku, x, y ) ) != 0 ) {
 						x = ( unsigned int ) -1;
-						y = ( unsigned int ) -1;
-						i = 0;
+#ifndef _PRINTGRIDLOOP
+			wprintf_s( L"_DEBUG: gridloop\nchanged by rule%i\r\n", i );
+			Sudoku_Print( solver->sudoku );
+#endif
+			            i = 0;
 						break;
 					}
 				}
 
 			}
-#ifdef _DEBUG
-			wprintf_s( L"_DEBUG: gridloop\n" );
-			Sudoku_Print( solver->sudoku );
-#endif
 		}
 	} while( change != 0 );
 

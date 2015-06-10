@@ -113,13 +113,13 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 			}
 		}
 	}
-		
+	
 	//i:y j:x
 	for( i = 0; i < sud->length; i += sud->length_of_box ) {
 		for( j = 0; j < sud->length; j += sud->length_of_box ) {
-			for( cellindex = 0; cellindex < sud->length; cellindex++ ) {
-				sud->cellbox[i][j][cellindex] = &sud->grid[cellindex / sud->length_of_box][cellindex % sud->length_of_box];
-				sud->cellboxvalue[i][j][cellindex] = &sud->cellvalue[cellindex / sud->length_of_box][cellindex % sud->length_of_box];
+			for( cellindex = 0; cellindex < sud->length; cellindex++ ) { 
+				sud->cellbox[i][j][cellindex] = &sud->grid[i + cellindex / sud->length_of_box][j + cellindex % sud->length_of_box];
+				sud->cellboxvalue[i][j][cellindex] = &sud->cellvalue[i + cellindex / sud->length_of_box][j + cellindex % sud->length_of_box];
 			}
 		}
 	}
