@@ -8,9 +8,16 @@ int rule6 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 	{
 		if ( __popcnt64 ( ( sud->grid[y][x] ) & ( sud->grid[i][x] ) ) == 2 && i != y )
 		{
-			sud->grid[i][x] = ( ( sud->grid[y][x] ) & ( sud->grid[i][x] ) );
-			sud->grid[y][x] = ( ( sud->grid[y][x] ) & ( sud->grid[i][x] ) );
-			return 1;
+			if ( __popcnt64 ( sud->grid[y][x] ) != 2 && __popcnt64 ( sud->grid[i][x] ) != 2 )
+			{
+				sud->grid[i][x] = ( ( sud->grid[y][x] ) & ( sud->grid[i][x] ) );
+				sud->grid[y][x] = ( ( sud->grid[y][x] ) & ( sud->grid[i][x] ) );
+
+				return 1;
+
+
+			}
+
 		}
 	}
 	return 0;
