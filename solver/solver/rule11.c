@@ -13,7 +13,7 @@ int rule11 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 		ctPartners = 0;
 		for ( i = 0; i < sud->length; i++ )
 		{
-			if ( i != y && ( ( (*sud->cellbox[y][x][i]) & ( ~sud->grid[y][x] ) ) == 0 ) )
+			if ( ( i != y ) && ( *sud->cellbox[y][x][i] & sud->grid[y][x] ) && ( ( ( *sud->cellbox[y][x][i] ) & ( ~sud->grid[y][x] ) ) == 0 ) )
 			{
 				partners[ctPartners++] = i;
 			}
