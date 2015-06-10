@@ -1,18 +1,26 @@
 #include "rules.h"
 
-//Hidden Pairs in Boxen
+//Naked pairs box
 int rule5 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 {
-	unsigned int i;
-
-	for ( i = 0; i < sud->length; i++ )
+	unsigned int i, j;
+	if ( __popcnt ( sud->grid[y][x] == 2 ) )
 	{
-		if( __popcnt64( ( ( sud->grid[y][x] )&( *sud->cellbox[y][x][i] ) ) == 2 && ( &( sud->grid[y][x] ) ) != sud->cellbox[y][x][i] ) )
+		for ( i = 0; i < sud->length; i++ )
 		{
-			*sud->cellbox[y][x][i] = (( sud->grid[y][x] )&( *sud->cellbox[y][x][i] ));
-			sud->grid[y][x] = (( sud->grid[y][x] )&( *sud->cellbox[y][x][i] ));
-			return 1;
+			if ( ( sud->grid[y][x] ) ^ ( *sud->cellbox[y][x][i] ) && ( &( sud->grid[y][x] ) ) != sud->cellbox[y][x][i] )
+			{
+				for ( j = 0; j < sud->length; j++ )
+				{
+					if ( ( &( sud->grid[y][x] ) ) != sud->cellbox[y][x][j] )
+					{
+						*sud->cellbox[y][x][j] &= ( ~( sud->grid[y][x] ) );
+						return 1;
+					}
+				}
+			}
 		}
 	}
+
 	return 0;
 }
