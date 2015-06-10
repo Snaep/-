@@ -26,6 +26,7 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 	unsigned char* file;
 	unsigned int i, j, rowindex, cellvalue, cellindex;
 	int retv;
+	SudokuCell mask_possible;
 
 	//read file
 	file = ReadAllBytes( filepath );
@@ -51,6 +52,11 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 		goto CLEANUP;
 	}
 
+	mask_possible = 0;
+	for( i = 0; i < sud->length; i++ ) {
+		mask_possible |= ( 1ll << i );
+	}
+
 	//allocate grid
 	sud->grid = ( SudokuCell** ) calloc( sud->length, sizeof( SudokuCell* ) );
 	if( sud->grid == NULL ) goto CLEANUP;
@@ -63,7 +69,7 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 		sud->grid[i] = ( SudokuCell* ) malloc( sud->length * sizeof( SudokuCell ) );
 		if( sud->grid[i] == NULL ) goto CLEANUP;
 		//alle werte auf möglich setzen
-		for( j = 0; j < sud->length; j++ ) sud->grid[i][j] = ( SudokuCell ) -1;
+		for( j = 0; j < sud->length; j++ ) sud->grid[i][j] = ( SudokuCell ) mask_possible;
 
 		sud->cellvalue[i] = ( int* ) calloc( sud->length, sizeof( int ) );
 	}
