@@ -51,6 +51,7 @@ int SolveSeq( struct Solver* solver ) {
 	unsigned int i;
 
 	do {
+		change = 0;
 
 		for( i = 0; i < solver->ctStrategies; i++ )//Loop trought rules
 		{

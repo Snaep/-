@@ -53,7 +53,7 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 	}
 
 	mask_possible = 0;
-	for( i = 0; i < sud->length; i++ ) {
+	for( i = 1; i <= sud->length; i++ ) {
 		mask_possible |= ( 1ll << i );
 	}
 
@@ -242,7 +242,7 @@ void Sudoku_SetCell( struct Sudoku* sud, unsigned int x, unsigned int y, unsigne
 	sud->cellvalue[y][x] = value;
 
 	//set all other values to impossible
-	for( i = 1; i <= sud->length; i++ ) sud->grid[y][x] &= ~( 1 << value );
+	sud->grid[y][x] = 0;
 
 	//store value in contains
 	sud->contains[CONTAINS_COL][x] |= ( 1ll << value );
