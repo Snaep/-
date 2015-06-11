@@ -9,10 +9,8 @@ int rule5( struct Sudoku* sud, unsigned int x, unsigned int y ) {
 			if( ( ( ( sud->grid[y][x] ) ^ ( *sud->cellbox[y][x][i] ) ) == 0 ) && ( &sud->grid[y][x] ) != sud->cellbox[y][x][i] ) {
 				changed = 0;
 				for( j = 0; j < sud->length; j++ ) {
-					if( ( &sud->grid[y][x] ) != sud->cellbox[y][x][j] ) {
-						changed |= ( ( *sud->cellbox[y][x][j] ) & sud->grid[y][x] );
-						*sud->cellbox[y][x][j] &= ( ~( sud->grid[y][x] ) );
-					}
+					changed |= ( ( *sud->cellbox[y][x][j] ) & sud->grid[y][x] );
+					*sud->cellbox[y][x][j] &= ( ~( sud->grid[y][x] ) );
 				}
 				return changed;
 			}
