@@ -60,13 +60,13 @@ int SolveSeq( struct Solver* solver ) {
 
 		for( i = 0; i < solver->ctStrategies; i++ )//Loop trought rules
 		{
-			highestrule = max( highestrule, i );
 			for( x = 0; x < solver->sudoku->length; x++ )//loop trought x positions
 			{
 				for( y = 0; y < solver->sudoku->length; y++ ) //Loop trought y positions
 				{
 					if( solver->sudoku->cellvalue[y][x] != 0 ) continue;
 					if( ( change = solver->rules[i]( solver->sudoku, x, y ) ) != 0 ) {
+						highestrule = max( highestrule, i );
 #ifndef PRINTGRIDLOOP
 			wprintf_s( L"_DEBUG: gridloop\nchanged by rule%i\r\n(x:%iy:%i)=%i\r\n", i, x, y, solver->sudoku->cellvalue[y][x] );
 			Sudoku_Print( solver->sudoku );
