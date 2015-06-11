@@ -17,8 +17,8 @@ int rule7( struct Sudoku* sud, unsigned int x, unsigned int y ) {
 				if( ( candidate & neighbourhood ) == 0 ) {
 					sud->grid[y][i] = candidate;
 					sud->grid[y][x] = candidate;
+					return 1;
 				}
-				return 1;
 			}
 			return 0;
 		}
