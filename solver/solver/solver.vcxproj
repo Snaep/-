@@ -117,6 +117,8 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="parameterset.c" />
+    <ClCompile Include="rule10.c" />
+    <ClCompile Include="rule11.c" />
     <ClCompile Include="rule8.c" />
     <ClCompile Include="rule0.c" />
     <ClCompile Include="rule1.c" />
@@ -126,6 +128,7 @@
     <ClCompile Include="rule3.c" />
     <ClCompile Include="rule4.c" />
     <ClCompile Include="rule5.c" />
+    <ClCompile Include="rule9.c" />
     <ClCompile Include="solver.c" />
     <ClCompile Include="stopwatch.c" />
     <ClCompile Include="sudoku.c" />

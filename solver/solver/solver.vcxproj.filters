@@ -69,6 +69,15 @@
     <ClCompile Include="rule8.c">
       <Filter>solver\rules\implementations</Filter>
     </ClCompile>
+    <ClCompile Include="rule9.c">
+      <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="rule10.c">
+      <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="rule11.c">
+      <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defaults.h">

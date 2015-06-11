@@ -18,6 +18,9 @@ int rule5( struct Sudoku* sud, unsigned int x, unsigned int y );
 int rule6( struct Sudoku* sud, unsigned int x, unsigned int y );
 int rule7( struct Sudoku* sud, unsigned int x, unsigned int y );
 int rule8( struct Sudoku* sud, unsigned int x, unsigned int y );
+int rule9( struct Sudoku* sud, unsigned int x, unsigned int y );
+int rule10( struct Sudoku* sud, unsigned int x, unsigned int y );
+int rule11( struct Sudoku* sud, unsigned int x, unsigned int y );
 
 
 //---------------------------------------------------------------
