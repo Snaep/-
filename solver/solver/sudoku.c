@@ -143,6 +143,8 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 		} else if( file[i] == '\n' ) {
 			rowindex++;
 			//if current tchar is not ctrl tchar, parse as cell content
+		} else if( file[i] == '\r' ) {
+			continue;
 		} else {
 			cellvalue *= 10;
 			cellvalue += file[i] - '0';
@@ -267,20 +269,29 @@ void Sudoku_SetCell( struct Sudoku* sud, unsigned int x, unsigned int y, unsigne
 	}
 }
 
+#define CONSOLE_WIDTH 200
 void Sudoku_Print( struct Sudoku* sud ) {
-	unsigned int i, j;
-
-	printf( "\r\n  " );
+	unsigned int i, j, k;
+	printf( "\r\n" );
 	for( i = 0; i < sud->length; i++ ) {
 		if( i && i % sud->length_of_box == 0 ) {
-			printf( "--------------------\r\n  " );
+			for( k = 0; k < CONSOLE_WIDTH; k++ ) printf( "-" );
+			printf( "\r\n" );
 		}
 		for( j = 0; j < sud->length; j++ ) {
 			if( j && j % sud->length_of_box == 0 ) printf( "|" );
-			if( sud->cellvalue[i][j] != 0 ) printf( " %i", sud->cellvalue[i][j] );
-			else printf( "  " );
+			if( sud->cellvalue[i][j] != 0 ) {
+				if( sud->cellvalue[i][j] < 10 ) {
+					printf( "  %i", sud->cellvalue[i][j] );
+				} else {
+					printf( " %i", sud->cellvalue[i][j] );
+				}
+			}
+			else printf( "   " );
 		}
-		printf( "\r\n  " );
+		printf( "\r\n" );
 	}
-	printf( "\r\n------------------------\r\n\r\n" );
+	printf( "\r\n" );
+	for( k = 0; k < CONSOLE_WIDTH; k++ ) printf( "--" );
+	printf( "\r\n\r\n" );
 }

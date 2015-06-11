@@ -50,7 +50,9 @@ int SolveSeq( struct Solver* solver ) {
 	unsigned int y, x;
 	unsigned int i;
 	unsigned int sc;
+	unsigned int highestrule;
 
+	highestrule = 0;
 
 	do {
 		change = 0;
@@ -58,13 +60,14 @@ int SolveSeq( struct Solver* solver ) {
 
 		for( i = 0; i < solver->ctStrategies; i++ )//Loop trought rules
 		{
+			highestrule = max( highestrule, i );
 			for( x = 0; x < solver->sudoku->length; x++ )//loop trought x positions
 			{
 				for( y = 0; y < solver->sudoku->length; y++ ) //Loop trought y positions
 				{
 					if( solver->sudoku->cellvalue[y][x] != 0 ) continue;
 					if( ( change = solver->rules[i]( solver->sudoku, x, y ) ) != 0 ) {
-#ifdef PRINTGRIDLOOP
+#ifndef PRINTGRIDLOOP
 			wprintf_s( L"_DEBUG: gridloop\nchanged by rule%i\r\n(x:%iy:%i)=%i\r\n", i, x, y, solver->sudoku->cellvalue[y][x] );
 			Sudoku_Print( solver->sudoku );
 #endif
@@ -77,6 +80,10 @@ int SolveSeq( struct Solver* solver ) {
 			}
 		}
 	} while( change != 0 );
+
+#ifdef _DEBUG
+	wprintf_s( L"_DEBUG: highest rule: %i", highestrule );
+#endif
 
 	return 0;
 }
