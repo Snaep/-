@@ -65,7 +65,7 @@ int SolveSeq( struct Solver* solver ) {
 					if( solver->sudoku->cellvalue[y][x] != 0 ) continue;
 					if( ( change = solver->rules[i]( solver->sudoku, x, y ) ) != 0 ) {
 						x = ( unsigned int ) -1;
-#ifndef _PRINTGRIDLOOP
+#ifdef PRINTGRIDLOOP
 			wprintf_s( L"_DEBUG: gridloop\nchanged by rule%i\r\n", i );
 			Sudoku_Print( solver->sudoku );
 #endif
