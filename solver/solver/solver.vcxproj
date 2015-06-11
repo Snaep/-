@@ -119,6 +119,9 @@
     <ClCompile Include="parameterset.c" />
     <ClCompile Include="rule10.c" />
     <ClCompile Include="rule11.c" />
+    <ClCompile Include="rule12.c" />
+    <ClCompile Include="rule13.c" />
+    <ClCompile Include="rule14.c" />
     <ClCompile Include="rule8.c" />
     <ClCompile Include="rule0.c" />
     <ClCompile Include="rule1.c" />

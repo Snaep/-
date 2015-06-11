@@ -37,6 +37,9 @@
     <Filter Include="solver\rules\implementations\Naked Subset">
       <UniqueIdentifier>{80b7d04e-ecfc-45e9-b5a0-4a3cbcc36e4e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="solver\rules\implementations\Hidden Subset">
+      <UniqueIdentifier>{94a7cc65-66fe-4f59-b89d-7690db530580}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -89,6 +92,15 @@
     </ClCompile>
     <ClCompile Include="rule11.c">
       <Filter>solver\rules\implementations\Naked Subset</Filter>
+    </ClCompile>
+    <ClCompile Include="rule12.c">
+      <Filter>solver\rules\implementations\Hidden Subset</Filter>
+    </ClCompile>
+    <ClCompile Include="rule13.c">
+      <Filter>solver\rules\implementations\Hidden Subset</Filter>
+    </ClCompile>
+    <ClCompile Include="rule14.c">
+      <Filter>solver\rules\implementations\Hidden Subset</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

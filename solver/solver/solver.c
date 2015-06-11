@@ -15,7 +15,10 @@ static const RULE rules[] = {
 	&rule8,
 	&rule9,
 	&rule10,
-	&rule11
+	&rule11,
+	&rule12,
+	&rule13,
+	&rule14
 };
 
 //------------------------------------------------
@@ -70,7 +73,7 @@ int SolveSeq( struct Solver* solver ) {
 					if( solver->sudoku->cellvalue[y][x] != 0 ) continue;
 					if( ( change = solver->rules[i]( solver->sudoku, x, y ) ) != 0 ) {
 						highestrule = max( highestrule, i );
-#ifndef PRINTGRIDLOOP
+#ifdef PRINTGRIDLOOP
 			wprintf_s( L"_DEBUG: gridloop\nchanged by rule%i\r\n(x:%iy:%i)=%i\r\n", i, x, y, solver->sudoku->cellvalue[y][x] );
 			Sudoku_Print( solver->sudoku );
 #endif
