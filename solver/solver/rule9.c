@@ -3,9 +3,9 @@
 //naked subset column
 int rule9( struct Sudoku* sud, unsigned int x, unsigned int y ) {
 	unsigned int i, j, changed, subset, ctPartners;
-	unsigned int partners[4];
+	unsigned int partners[5];
 
-	for( subset = 4; subset >= 3; subset-- ) {
+	for( subset = 5; subset >= 3; subset-- ) {
 		if( __popcnt64( sud->grid[y][x] ) != subset ) continue;
 		if( __popcnt64( sud->contains[CONTAINS_COL][y] ) < subset ) continue;
 
