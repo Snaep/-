@@ -4,6 +4,7 @@
 int rule3( struct Sudoku* sud, unsigned int x, unsigned int y ) {
 	unsigned int i, j;
 	if( __popcnt64( sud->grid[y][x] ) != 2 ) return 0;
+	if( __popcnt64( sud->contains[CONTAINS_ROW][y] ) == sud->length - 2 ) return 0;
 
 	for( i = 0; i < sud->length; i++ ) {
 		if( i == x ) continue;

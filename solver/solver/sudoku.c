@@ -232,11 +232,9 @@ int Sudoku_Validate( struct Sudoku* sud ) {
 }
 
 void Sudoku_SetCell( struct Sudoku* sud, unsigned int x, unsigned int y, unsigned int value ) {
-	unsigned int bi, i, j;
+	unsigned int i, j;
 
 	if( value == 0 ) return;
-
-	bi = ( y / sud->length_of_box ) * sud->length_of_box + x / sud->length_of_box;
 
 	//store value in grid
 	sud->cellvalue[y][x] = value;
@@ -247,7 +245,7 @@ void Sudoku_SetCell( struct Sudoku* sud, unsigned int x, unsigned int y, unsigne
 	//store value in contains
 	sud->contains[CONTAINS_COL][x] |= ( 1ll << value );
 	sud->contains[CONTAINS_ROW][y] |= ( 1ll << value );
-	sud->contains[CONTAINS_BOX][bi] |= ( 1ll << value );
+	sud->contains[CONTAINS_BOX][BOXINDEX( sud, x, y )] |= ( 1ll << value );
 	
 	//remove other cells possibility for value
 	//col / row

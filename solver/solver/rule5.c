@@ -4,6 +4,8 @@
 int rule5 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 {
 	unsigned int i, j;
+	if( __popcnt64( sud->contains[CONTAINS_BOX][ BOXINDEX(sud, x, y) ] ) == sud->length - 2 ) return 0;
+
 	if ( __popcnt ( sud->grid[y][x] == 2 ) )
 	{
 		for ( i = 0; i < sud->length; i++ )

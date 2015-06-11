@@ -16,6 +16,8 @@
 #define SUDOKUERROR_GRIDSIZE (-2)
 #define SUDOKUERROR_PARSER (-3)
 
+#define BOXINDEX(sud, x, y) ( ( y / sud->length_of_box ) * sud->length_of_box + x / sud->length_of_box )
+
 typedef unsigned long long SudokuCell;
 
 struct Sudoku {
