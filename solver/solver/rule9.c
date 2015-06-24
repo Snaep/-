@@ -2,7 +2,7 @@
 
 //naked subset column
 int rule9( struct Sudoku* sud, unsigned int x, unsigned int y ) {
-	unsigned int i, j, changed, subset, ctPartners;
+	unsigned int i, changed, subset, ctPartners;
 	unsigned int partners[5];
 
 	for( subset = 5; subset >= 3; subset-- ) {

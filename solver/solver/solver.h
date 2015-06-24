@@ -4,8 +4,6 @@
 #define SM_SEQ 0
 #define SM_PCELL 1
 
-#define PRINTGRIDLOOP
-
 struct Solver {
 	unsigned int ctStrategies;
 	unsigned int mode;

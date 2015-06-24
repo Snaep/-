@@ -2,7 +2,7 @@
 
 //Hidden pairs in Reihen
 int rule7( struct Sudoku* sud, unsigned int x, unsigned int y ) {
-	unsigned int i, j, changed;
+	unsigned int i, j;
 	SudokuCell candidate, neighbourhood;
 
 	for( i = 0; i < sud->length; i++ ) {

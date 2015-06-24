@@ -84,11 +84,12 @@ int main( int argc, char* argv[] ) {
 #endif
 	if( params.timer != 0 ) printf_s( "time solver: %.3fms\r\n", Stopwatch_GetTime( &stopwatch ) * 1000 );
 
-	rc = ( Sudoku_Validate( &sudoku ) != 0 );
+	rc = Sudoku_Validate( &sudoku ) != 0;
 
-#ifdef _DEBUG
+#if defined(_DEBUG) || defined(PRINTVALIDATION)
 	if( rc == 0 ) wprintf_s( L"validation successful.\n" );
 	else wprintf_s( L"validation failed.\n" );
+	getchar();
 #endif
 	
 	return rc;

@@ -3,7 +3,7 @@
 //fuk dis
 int rule10 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 {
-	unsigned int i, j, changed, subset, ctPartners;
+	unsigned int changed, i, subset, ctPartners;
 	unsigned int partners[5];
 
 	for ( subset = 5; subset >= 3; subset-- )
