@@ -14,7 +14,7 @@ int rule0( struct Sudoku* sud, unsigned int x, unsigned  int y ) {
 	}
 
 	//loop through candidates
-	for( i = 1; i <= sud->length; i++ ) {
+	for( i = 0; i < sud->length; i++ ) {
 
 		//wenn kandidat gefunden
 		if( ( sud->grid[y][x] & ( 1ll << i ) ) != 0 ) {
@@ -22,7 +22,7 @@ int rule0( struct Sudoku* sud, unsigned int x, unsigned  int y ) {
 			//wenn kandidat an keiner anderen Stelle in Reihe möglich ist
 			//Setze Zellwert
 			if( ( row & ( 1ll << i ) ) == 0 ) {
-				sud->pSetCell( sud, x, y, i );
+				sud->pSetCell( sud, x, y, i + 1 );
 				return 1;
 			}
 		}

@@ -16,14 +16,14 @@ int rule2 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 	}
 
 	//Laufe durch die Kandiaten 
-	for ( i = 1; i <= sud->length; i++ )
+	for ( i = 0; i < sud->length; i++ )
 	{
 		//Wenn Kandidat gefunden
 		if ( (sud->grid[y][x] & ( 1ll << i )) != 0 )
 		{
 			if ( ( box & ( 1ll << i ) ) == 0 )
 			{
-				sud->pSetCell ( sud, x, y, i );
+				sud->pSetCell ( sud, x, y, i + 1);
 				return 1;
 			}
 		}

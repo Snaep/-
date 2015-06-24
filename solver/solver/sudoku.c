@@ -219,7 +219,7 @@ int Sudoku_Validate( struct Sudoku* sud ) {
 
 	//erstelle bitmaske 
 	//1 bei jedem möglichen bit
-	for( i = 1; i <= sud->length; i++ ) contains_mask |= ( 1ll << i );
+	for( i = 0; i < sud->length; i++ ) contains_mask |= ( 1ll << i );
 
 	for( i = 0; i < 3; i++ ) {
 		for( j = 0; j < sud->length; j++ ) {
@@ -240,6 +240,9 @@ void Sudoku_SetCell( struct Sudoku* sud, unsigned int x, unsigned int y, unsigne
 
 	//store value in grid
 	sud->cellvalue[y][x] = value;
+
+	//reduce value to shiftvalue (1ll << 0) == 1 
+	value--;
 
 	//set all other values to impossible
 	sud->grid[y][x] = 0;

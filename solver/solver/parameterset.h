@@ -30,7 +30,7 @@ struct ParameterSet {
 	unsigned int timer;
 
 	//Dateipfad zum Sudoku
-	wchar_t filepath[512];
+	wchar_t filepath[64];
 };
 
 //parst die Parameter, die im argv array übergeben werden
