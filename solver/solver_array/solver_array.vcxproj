@@ -14,6 +14,7 @@
     <ClCompile Include="..\solver\combinator.cpp" />
     <ClCompile Include="..\solver\parameterset.c" />
     <ClCompile Include="..\solver\stopwatch.c" />
+    <ClCompile Include="help_functions.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="rule0.c" />
     <ClCompile Include="rule1.c" />

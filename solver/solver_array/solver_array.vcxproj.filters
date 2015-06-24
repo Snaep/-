@@ -105,6 +105,9 @@
     <ClCompile Include="rule14.c">
       <Filter>solver\rules\implementations\Naked Subset</Filter>
     </ClCompile>
+    <ClCompile Include="help_functions.c">
+      <Filter>solver\rules\implementations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\solver\stopwatch.h">
