@@ -53,7 +53,7 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 	}
 
 	mask_possible = 0;
-	for( i = 1; i <= sud->length; i++ ) {
+	for( i = 0; i < sud->length; i++ ) {
 		mask_possible |= ( 1ll << i );
 	}
 
