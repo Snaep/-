@@ -1,8 +1,9 @@
 #include "rules.h"
-
+#include "..\\solver\combinator.h"
 //:/
 //Naked Subsets rows
 int rule12( struct Sudoku* sud, unsigned int x, unsigned  int y ) {
+
 	struct Combinator c;
 	SudokuCell cellok = { 0 };
 	SudokuCell subset = { 0 };
@@ -75,4 +76,3 @@ int rule12( struct Sudoku* sud, unsigned int x, unsigned  int y ) {
 
 	return 0;
 }
-

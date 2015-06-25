@@ -16,9 +16,9 @@ static const RULE rules[] = {
 	&rule12,
 	&rule13,
 	&rule14,
-	/*&rule12,
+	&rule12,
 	&rule13,
-	&rule14*/
+	&rule14
 };
 
 //------------------------------------------------
