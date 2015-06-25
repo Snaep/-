@@ -2,13 +2,10 @@
 
 //:/
 int rule12( struct Sudoku* sud, unsigned int x, unsigned  int y ) {
-	int i;
+	int i, j;
+	int subsetsize;
+	
 
-	//erzeuge permutationen aus Zahlen der Zellmöglichkeiten
 
-
-	//Validiere permutation
-
-	//streiche Möglichkeiten
 }
 

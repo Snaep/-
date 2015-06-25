@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="parameterset.c" />
+    <ClCompile Include="combinator.cpp" />
     <ClCompile Include="rule10.c" />
     <ClCompile Include="rule11.c" />
     <ClCompile Include="rule12.c" />
@@ -139,6 +140,7 @@
   <ItemGroup>
     <ClInclude Include="defaults.h" />
     <ClInclude Include="parameterset.h" />
+    <ClInclude Include="combinator.h" />
     <ClInclude Include="rules.h" />
     <ClInclude Include="solver.h" />
     <ClInclude Include="sudoku.h" />

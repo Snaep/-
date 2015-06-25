@@ -8,7 +8,7 @@ int rule11 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 
 	for ( subset = 5; subset >= 3; subset-- )
 	{
-		if ( __popcnt64 ( sud->grid[y][x] ) != subset ) continue;
+		if ( __popcnt64 ( sud->grid[y][x] ) > subset ) continue;
 		
 		ctPartners = 0;
 		for ( i = 0; i < sud->length; i++ )

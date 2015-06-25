@@ -6,7 +6,7 @@ int rule9( struct Sudoku* sud, unsigned int x, unsigned int y ) {
 	unsigned int partners[5];
 
 	for( subset = 5; subset >= 3; subset-- ) {
-		if( __popcnt64( sud->grid[y][x] ) != subset ) continue;
+		if( __popcnt64( sud->grid[y][x] ) > subset ) continue;
 		if( __popcnt64( sud->contains[CONTAINS_COL][y] ) < subset ) continue;
 
 		ctPartners = 0;
