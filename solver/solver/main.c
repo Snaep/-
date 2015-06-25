@@ -78,7 +78,7 @@ int main( int argc, char* argv[] ) {
 
 	if( params.timer != 0 ) Stopwatch_Start( &stopwatch );
 	rc = Solver_Solve( &solver );
-#ifdef _DEBUG
+#if defined(_DEBUG) || defined(PRINTVALIDATION)
 	wprintf_s( L"_DEBUG: solve returned: %i\n\ncurrent grid:\n", rc );
 	Sudoku_Print( &sudoku );
 #endif

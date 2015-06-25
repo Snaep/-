@@ -2,10 +2,6 @@
 
 //:/
 int rule12( struct Sudoku* sud, unsigned int x, unsigned  int y ) {
-	int i, j;
-	int subsetsize;
-	
-
-
+	return 0;
 }
 
