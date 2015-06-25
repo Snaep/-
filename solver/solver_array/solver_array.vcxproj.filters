@@ -25,5 +25,108 @@
     <Filter Include="solver\rules\implementations">
       <UniqueIdentifier>{d3c56aa8-fc2f-4002-bc45-b5bf11042f99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="solver\rules\implementations\Hidden Pair">
+      <UniqueIdentifier>{8ea4fa12-9fa7-4147-949f-a60b33b64b93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="solver\rules\implementations\Hidden Subset">
+      <UniqueIdentifier>{2585dfe7-ead8-42a3-946c-522b5b68178b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="solver\rules\implementations\Naked Pair">
+      <UniqueIdentifier>{99791d39-fedc-44f6-94d4-c275a6b7abbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="solver\rules\implementations\Naked Subset">
+      <UniqueIdentifier>{b3027172-74b7-43f6-bd5d-912a68896e55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="solver\rules\implementations\Single Possibility">
+      <UniqueIdentifier>{52fd45c1-97c8-47c6-b635-fc28efc381d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sudoku">
+      <UniqueIdentifier>{11aaa978-e1a4-43a1-982a-fc1c3f4990d9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\solver\stopwatch.c">
+      <Filter>environment\Stopwatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\solver\combinator.cpp">
+      <Filter>solver\combinator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\solver\parameterset.c">
+      <Filter>parameterset</Filter>
+    </ClCompile>
+    <ClCompile Include="sudoku.c">
+      <Filter>sudoku</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>environment</Filter>
+    </ClCompile>
+    <ClCompile Include="rule0.c">
+      <Filter>solver\rules\implementations\Single Possibility</Filter>
+    </ClCompile>
+    <ClCompile Include="rule1.c">
+      <Filter>solver\rules\implementations\Single Possibility</Filter>
+    </ClCompile>
+    <ClCompile Include="rule2.c">
+      <Filter>solver\rules\implementations\Single Possibility</Filter>
+    </ClCompile>
+    <ClCompile Include="rule3.c">
+      <Filter>solver\rules\implementations\Naked Pair</Filter>
+    </ClCompile>
+    <ClCompile Include="rule4.c">
+      <Filter>solver\rules\implementations\Naked Pair</Filter>
+    </ClCompile>
+    <ClCompile Include="rule5.c">
+      <Filter>solver\rules\implementations\Naked Pair</Filter>
+    </ClCompile>
+    <ClCompile Include="rule6.c">
+      <Filter>solver\rules\implementations\Hidden Pair</Filter>
+    </ClCompile>
+    <ClCompile Include="rule7.c">
+      <Filter>solver\rules\implementations\Hidden Pair</Filter>
+    </ClCompile>
+    <ClCompile Include="rule8.c">
+      <Filter>solver\rules\implementations\Hidden Pair</Filter>
+    </ClCompile>
+    <ClCompile Include="rule9.c">
+      <Filter>solver\rules\implementations\Hidden Subset</Filter>
+    </ClCompile>
+    <ClCompile Include="rule10.c">
+      <Filter>solver\rules\implementations\Hidden Subset</Filter>
+    </ClCompile>
+    <ClCompile Include="rule11.c">
+      <Filter>solver\rules\implementations\Hidden Subset</Filter>
+    </ClCompile>
+    <ClCompile Include="rule12.c">
+      <Filter>solver\rules\implementations\Naked Subset</Filter>
+    </ClCompile>
+    <ClCompile Include="rule13.c">
+      <Filter>solver\rules\implementations\Naked Subset</Filter>
+    </ClCompile>
+    <ClCompile Include="rule14.c">
+      <Filter>solver\rules\implementations\Naked Subset</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\solver\stopwatch.h">
+      <Filter>environment\Stopwatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\solver\combinator.h">
+      <Filter>solver\combinator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\solver\defaults.h">
+      <Filter>environment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\solver\parameterset.h">
+      <Filter>parameterset</Filter>
+    </ClInclude>
+    <ClInclude Include="..\solver\solver.h">
+      <Filter>solver</Filter>
+    </ClInclude>
+    <ClInclude Include="sudoku.h">
+      <Filter>sudoku</Filter>
+    </ClInclude>
+    <ClInclude Include="rules.h">
+      <Filter>solver\rules</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

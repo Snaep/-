@@ -10,6 +10,37 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\solver\combinator.cpp" />
+    <ClCompile Include="..\solver\parameterset.c" />
+    <ClCompile Include="..\solver\stopwatch.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="rule0.c" />
+    <ClCompile Include="rule1.c" />
+    <ClCompile Include="rule10.c" />
+    <ClCompile Include="rule11.c" />
+    <ClCompile Include="rule12.c" />
+    <ClCompile Include="rule13.c" />
+    <ClCompile Include="rule14.c" />
+    <ClCompile Include="rule2.c" />
+    <ClCompile Include="rule3.c" />
+    <ClCompile Include="rule4.c" />
+    <ClCompile Include="rule5.c" />
+    <ClCompile Include="rule6.c" />
+    <ClCompile Include="rule7.c" />
+    <ClCompile Include="rule8.c" />
+    <ClCompile Include="rule9.c" />
+    <ClCompile Include="sudoku.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\solver\combinator.h" />
+    <ClInclude Include="..\solver\defaults.h" />
+    <ClInclude Include="..\solver\parameterset.h" />
+    <ClInclude Include="..\solver\solver.h" />
+    <ClInclude Include="..\solver\stopwatch.h" />
+    <ClInclude Include="rules.h" />
+    <ClInclude Include="sudoku.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D4C45589-CF30-45B5-A8EB-9C93A9AC2941}</ProjectGuid>
     <RootNamespace>solver_array</RootNamespace>

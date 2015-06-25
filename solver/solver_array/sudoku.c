@@ -1,5 +1,5 @@
 #include "sudoku.h"
-#include "defaults.h"
+#include "..\\solver\\defaults.h"
 #include <math.h>
 
 unsigned char* ReadAllBytes( const wchar_t * file ) {
@@ -24,9 +24,8 @@ unsigned char* ReadAllBytes( const wchar_t * file ) {
 }
 int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t delimiter ) {
 	unsigned char* file;
-	unsigned int i, j, rowindex, cellvalue, cellindex;
+	unsigned int i, j, k, rowindex, cellvalue, cellindex;
 	int retv;
-	SudokuCell mask_possible;
 
 	//read file
 	file = ReadAllBytes( filepath );
@@ -51,12 +50,7 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 		retv = SUDOKUERROR_GRIDSIZE;
 		goto CLEANUP;
 	}
-
-	mask_possible = 0;
-	for( i = 0; i < sud->length; i++ ) {
-		mask_possible |= ( 1ll << i );
-	}
-
+	
 	//allocate grid
 	sud->grid = ( SudokuCell** ) calloc( sud->length, sizeof( SudokuCell* ) );
 	if( sud->grid == NULL ) goto CLEANUP;
@@ -66,18 +60,25 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 
 	//allocate grid rows
 	for( i = 0; i < sud->length; i++ ) {
-		sud->grid[i] = ( SudokuCell* ) malloc( sud->length * sizeof( SudokuCell ) );
+		sud->grid[i] = ( SudokuCell* ) calloc( sizeof( SudokuCell ), sud->length );
 		if( sud->grid[i] == NULL ) goto CLEANUP;
 		//alle werte auf möglich setzen
-		for( j = 0; j < sud->length; j++ ) sud->grid[i][j] = ( SudokuCell ) mask_possible;
+		for( j = 0; j < sud->length; j++ ) {
+			sud->grid[i][j] = ( SudokuCell ) malloc( sizeof( int ) * sud->length );
+			for( k = 0; k < sud->length; k++ ) sud->grid[i][j][k] = 1;
+		}
 
 		sud->cellvalue[i] = ( int* ) calloc( sud->length, sizeof( int ) );
 	}
 
 	//allocate contains helper
 	for( i = 0; i < 3; i++ ) {
-		sud->contains[i] = ( unsigned long long* ) calloc( sud->length, sizeof( unsigned long long ) );
+		sud->contains[i] = ( SudokuCell* ) calloc( sud->length, sizeof( SudokuCell ) );
 		if( sud->contains[i] == NULL ) goto CLEANUP;
+		for( j = 0; j < sud->length; j++ ) {
+			sud->contains[i][j] = calloc( sizeof( unsigned int ), sud->length );
+			if( sud->contains[i][j] == 0 ) goto CLEANUP;
+		}
 	}
 
 
@@ -99,11 +100,11 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 			//position (0,0) in box-> allocate
 			if( j % sud->length_of_box == 0 && i % sud->length_of_box == 0 ) {
 				sud->cellbox[i][j] = ( SudokuCell** ) calloc( sud->length, sizeof( SudokuCell* ) );
-				if( sud->cellbox[i][j] == NULL ) goto CLEANUP;
+				if( sud->cellbox[i][j] == NULL ) goto CLEANUP;				
 				sud->cellboxvalue[i][j] = ( unsigned int** ) calloc( sud->length, sizeof( unsigned int* ) );
 				if( sud->cellboxvalue[i][j] == NULL ) goto CLEANUP;
-			
-			//position (0,x) in box -> copy ptr from above cell)
+
+				//position (0,x) in box -> copy ptr from above cell)
 			} else if( j % sud->length_of_box == 0 ) {
 				sud->cellbox[i][j] = sud->cellbox[i - 1][j];
 				sud->cellboxvalue[i][j] = sud->cellboxvalue[i - 1][j];
@@ -113,11 +114,11 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 			}
 		}
 	}
-	
+
 	//i:y j:x
 	for( i = 0; i < sud->length; i += sud->length_of_box ) {
 		for( j = 0; j < sud->length; j += sud->length_of_box ) {
-			for( cellindex = 0; cellindex < sud->length; cellindex++ ) { 
+			for( cellindex = 0; cellindex < sud->length; cellindex++ ) {
 				sud->cellbox[i][j][cellindex] = &sud->grid[i + cellindex / sud->length_of_box][j + cellindex % sud->length_of_box];
 				sud->cellboxvalue[i][j][cellindex] = &sud->cellvalue[i + cellindex / sud->length_of_box][j + cellindex % sud->length_of_box];
 			}
@@ -151,8 +152,6 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 		}
 	}
 
-
-
 	//skip cleanup
 	retv = 0;
 	goto END;
@@ -162,7 +161,10 @@ CLEANUP:
 		//free sudoku grid if allocated
 		if( sud->grid != NULL ) {
 			for( i = 0; i < sud->length; i++ ) {
-				if( sud->grid[i] != NULL ) free( sud->grid[i] );
+				if( sud->grid[i] != NULL ) {
+					for( j = 0; j < sud->length; j++ ) if( sud->grid[i][j] ) free( sud->grid[i][j] );
+					free( sud->grid[i] );
+				}
 			}
 
 			free( sud->grid );
@@ -201,7 +203,12 @@ CLEANUP:
 
 		//free contains grid
 		for( i = 0; i < 3; i++ ) {
-			if( sud->contains[i] != NULL ) free( sud->contains[i] );
+			if( sud->contains[i] != NULL ) {
+				for( j = 0; j < sud->length; j++ ) {
+					free( sud->contains[i][j] );
+				}
+				free( sud->contains[i] );
+			}
 		}
 
 		free( sud );
@@ -214,22 +221,16 @@ END:
 }
 
 int Sudoku_Validate( struct Sudoku* sud ) {
-	unsigned int i, j;
-	unsigned long long contains_mask = 0;
-
-	//erstelle bitmaske 
-	//1 bei jedem möglichen bit
-	for( i = 0; i < sud->length; i++ ) contains_mask |= ( 1ll << i );
-
+	unsigned int i, j, k;
+	
 	for( i = 0; i < 3; i++ ) {
 		for( j = 0; j < sud->length; j++ ) {
-			//wenn eine Nachbarschaft eine Zahl nicht enthält
-			//(=> eine andere Zahl doppelt ist)
-			//wird das xor mit der '1-Bitmaske' ein Wert ungleich 0 ergeben
-			if( ( sud->contains[i][j] ^ contains_mask ) != 0 ) return -1;
+			for( k = 0; k < sud->length; k++ ) {
+				if( sud->contains[i][j][k] == 0 ) return -1;
+			}
 		}
 	}
-	
+
 	return 0;
 }
 
@@ -248,16 +249,16 @@ void Sudoku_SetCell( struct Sudoku* sud, unsigned int x, unsigned int y, unsigne
 	sud->grid[y][x] = 0;
 
 	//store value in contains
-	sud->contains[CONTAINS_COL][x] |= ( 1ll << value );
-	sud->contains[CONTAINS_ROW][y] |= ( 1ll << value );
-	sud->contains[CONTAINS_BOX][BOXINDEX( sud, x, y )] |= ( 1ll << value );
-	
+	sud->contains[CONTAINS_COL][x][value] = 1;
+	sud->contains[CONTAINS_ROW][y][value] = 1;
+	sud->contains[CONTAINS_BOX][BOXINDEX( sud, x, y )][value] = 1;
+
 	//remove other cells possibility for value
-	//col / row
+	//col / row / box
 	for( i = 0; i < sud->length; i++ ) {
-		sud->grid[y][i] &= ~( 1ll << value );
-		sud->grid[i][x] &= ~( 1ll << value );
-		( *sud->cellbox[y][x][i] ) &= ~( 1ll << value );
+		sud->grid[y][i][value] = 0;
+		sud->grid[i][x][value] = 0;
+		(*sud->cellbox[y][x][i])[value] = 0;
 	}
 }
 
@@ -278,8 +279,7 @@ void Sudoku_Print( struct Sudoku* sud ) {
 				} else {
 					printf( " %i", sud->cellvalue[i][j] );
 				}
-			}
-			else printf( "   " );
+			} else printf( "   " );
 		}
 		printf( "\r\n" );
 	}

@@ -11,7 +11,7 @@ int rule3( struct Sudoku* sud, unsigned int x, unsigned int y ) {
 			changed = 0;
 			for( j = 0; j < sud->length; j++ ) {
 				if( j != i && j != x ) {
-					changed |= ( sud->grid[y][j] & sud->grid[y][x] );
+					changed |= ( ( sud->grid[y][j] & sud->grid[y][x] ) != 0 );
 					sud->grid[y][j] &= ( ~( sud->grid[y][x] ) );
 				}
 			}
