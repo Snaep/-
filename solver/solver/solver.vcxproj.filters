@@ -40,7 +40,7 @@
     <Filter Include="solver\rules\implementations\Hidden Subset">
       <UniqueIdentifier>{94a7cc65-66fe-4f59-b89d-7690db530580}</UniqueIdentifier>
     </Filter>
-    <Filter Include="solver\Permutations">
+    <Filter Include="solver\combinator">
       <UniqueIdentifier>{0dacbc77-a5c6-4d66-b0fe-985044540a24}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -106,7 +106,7 @@
       <Filter>solver\rules\implementations\Hidden Subset</Filter>
     </ClCompile>
     <ClCompile Include="combinator.cpp">
-      <Filter>solver\Permutations</Filter>
+      <Filter>solver\combinator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,7 +129,7 @@
       <Filter>environment\Stopwatch</Filter>
     </ClInclude>
     <ClInclude Include="combinator.h">
-      <Filter>solver\Permutations</Filter>
+      <Filter>solver\combinator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

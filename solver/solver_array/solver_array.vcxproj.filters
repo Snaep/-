@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="environment">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="parameterset">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="environment\Stopwatch">
+      <UniqueIdentifier>{ffba2008-c64b-42c3-87fc-b0f088f6eb27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="solver">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="solver\combinator">
+      <UniqueIdentifier>{77002fb2-e589-4e65-a0a3-5618045dbfb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="solver\rules">
+      <UniqueIdentifier>{4eb70330-4c10-4fea-9606-e9038fac7f60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="solver\rules\implementations">
+      <UniqueIdentifier>{d3c56aa8-fc2f-4002-bc45-b5bf11042f99}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

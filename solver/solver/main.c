@@ -4,7 +4,7 @@
 #include "sudoku.h"
 #include "stopwatch.h"
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(_WIN64)
 #ifdef _DEBUG
 int run( int arc, wchar_t* argv[] );
 int wmain( int argc, wchar_t* argv[] ) {
