@@ -7,7 +7,7 @@ int rule8( struct Sudoku* sud, unsigned int x, unsigned int y ) {
 
 	for( i = 0; i < sud->length; i++ ) {
 
-		AND ( sud->grid[y][x], sud->cellbox[y][x][i], candidate, sud->length );//candidate = ( sud->grid[y][x] ) & ( *sud->cellbox[y][x][i] );
+		AND ( sud->grid[y][x], *sud->cellbox[y][x][i], candidate, sud->length );//candidate = ( sud->grid[y][x] ) & ( *sud->cellbox[y][x][i] );
 
 
 		if( ( POPCNT( candidate,sud->length ) == 2 ) && ( &sud->grid[y][x] != sud->cellbox[y][x][i] ) ) {
@@ -16,7 +16,7 @@ int rule8( struct Sudoku* sud, unsigned int x, unsigned int y ) {
 				for( j = 0; j < sud->length; j++ ) {
 					if ( sud->cellbox[y][x][j] != &sud->grid[y][x] && j != i )
 					{
-						OR ( sud->cellbox[y][x][j], neighbourhood, neighbourhood, sud->length );//neighbourhood |= *sud->cellbox[y][x][j];
+						OR ( *sud->cellbox[y][x][j], neighbourhood, neighbourhood, sud->length );//neighbourhood |= *sud->cellbox[y][x][j];
 					}
 				}
 				AND ( candidate, neighbourhood, temp, sud->length );

@@ -65,6 +65,7 @@ int Sudoku_ParseFile( struct Sudoku* sud, const wchar_t* filepath, const wchar_t
 		//alle werte auf möglich setzen
 		for( j = 0; j < sud->length; j++ ) {
 			sud->grid[i][j] = ( SudokuCell ) malloc( sizeof( int ) * sud->length );
+			if( sud->grid[i][j] == NULL ) goto CLEANUP;
 			for( k = 0; k < sud->length; k++ ) sud->grid[i][j][k] = 1;
 		}
 

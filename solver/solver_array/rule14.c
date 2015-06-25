@@ -61,7 +61,7 @@ int rule14 ( struct Sudoku* sud, unsigned int x, unsigned  int y )
 					OR ( changed, temp, changed, sud->length );//changed |= *sud->cellbox[y][x][j] & subset;
 
 					INV ( subset, temp, sud->length );
-					AND ( subset, sud->cellbox[y][x][j], sud->cellbox[y][x][j], sud->length );//*sud->cellbox[y][x][j] &= ( ~subset );
+					AND ( subset, *sud->cellbox[y][x][j], *sud->cellbox[y][x][j], sud->length );//*sud->cellbox[y][x][j] &= ( ~subset );
 				}
 			}
 

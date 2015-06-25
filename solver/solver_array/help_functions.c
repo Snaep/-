@@ -1,6 +1,6 @@
 #include "rules.h"
 
-void EXOR ( SudokuCell *v1, SudokuCell *v2, SudokuCell *out, unsigned int n )
+void EXOR ( SudokuCell v1, SudokuCell v2, SudokuCell out, unsigned int n )
 {
 	unsigned int i;
 	for ( i = 0; i < n; i++ )
@@ -15,12 +15,12 @@ void EXOR ( SudokuCell *v1, SudokuCell *v2, SudokuCell *out, unsigned int n )
 		}
 	}
 }
-void AND ( SudokuCell *v1, SudokuCell *v2, SudokuCell *out, unsigned int n )
+void AND ( SudokuCell v1, SudokuCell v2, SudokuCell out, unsigned int n )
 {
 	unsigned int i;
 	for ( i = 0; i < n; i++ )
 	{
-		if ( v1[i] == v2[i] & v1[i] == 1 )
+		if ( v1[i] == v2[i] && v1[i] == 1 )
 		{
 			out[i] = 1;
 		}
@@ -30,7 +30,7 @@ void AND ( SudokuCell *v1, SudokuCell *v2, SudokuCell *out, unsigned int n )
 		}
 	}
 }
-void OR  ( SudokuCell *v1, SudokuCell *v2, SudokuCell *out, unsigned int n )
+void OR  ( SudokuCell v1, SudokuCell v2, SudokuCell out, unsigned int n )
 {
 	unsigned int i;
 
@@ -46,12 +46,12 @@ void OR  ( SudokuCell *v1, SudokuCell *v2, SudokuCell *out, unsigned int n )
 		}
 	}
 }
-void INV( SudokuCell *src, SudokuCell *out, unsigned int n )
+void INV( SudokuCell src, SudokuCell out, unsigned int n )
 {
 	unsigned int i;
 	unsigned int *temp;
 
-	temp = ( unsigned int ) malloc ( sizeof ( unsigned int ) *n );
+	temp = ( unsigned int* ) malloc ( sizeof ( unsigned int ) *n );
 
 	for ( i = 0; i < n; i++ )
 	{
@@ -65,7 +65,7 @@ void INV( SudokuCell *src, SudokuCell *out, unsigned int n )
 		}
 	}
 }
-int POPCNT ( SudokuCell *src, unsigned int n )
+int POPCNT ( SudokuCell src, unsigned int n )
 {
 	unsigned int i;
 	unsigned int cnt=0;

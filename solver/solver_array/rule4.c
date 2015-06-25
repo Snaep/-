@@ -14,7 +14,7 @@ int rule4 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 
 		EXOR ( sud->grid[i][x], sud->grid[y][x], out, sud->length );
 
-		if ( POPCNT ( out, sud->grid ) )
+		if ( POPCNT ( out, sud->length ) )
 		{
 			changed = 0;
 			for ( j = 0; j < sud->length; j++ )
