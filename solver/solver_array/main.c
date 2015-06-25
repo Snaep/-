@@ -1,6 +1,8 @@
 #include "..\\solver\\defaults.h"
 #include "..\\solver\\parameterset.h"
-#include "..\\solver\\solver.h"
+#include "solver.h"
+#include"..\solver\combinator.h"
+
 #include "sudoku.h"
 #include "..\\solver\\stopwatch.h"
 

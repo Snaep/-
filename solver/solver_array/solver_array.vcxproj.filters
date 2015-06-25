@@ -48,9 +48,6 @@
     <ClCompile Include="..\solver\stopwatch.c">
       <Filter>environment\Stopwatch</Filter>
     </ClCompile>
-    <ClCompile Include="..\solver\combinator.cpp">
-      <Filter>solver\combinator</Filter>
-    </ClCompile>
     <ClCompile Include="..\solver\parameterset.c">
       <Filter>parameterset</Filter>
     </ClCompile>
@@ -111,13 +108,16 @@
     <ClCompile Include="rulesingle.c">
       <Filter>solver\rules\implementations\Single Possibility</Filter>
     </ClCompile>
+    <ClCompile Include="solver.c">
+      <Filter>solver</Filter>
+    </ClCompile>
+    <ClCompile Include="combinator.cpp">
+      <Filter>solver\combinator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\solver\stopwatch.h">
       <Filter>environment\Stopwatch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\solver\combinator.h">
-      <Filter>solver\combinator</Filter>
     </ClInclude>
     <ClInclude Include="..\solver\defaults.h">
       <Filter>environment</Filter>
@@ -133,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="rules.h">
       <Filter>solver\rules</Filter>
+    </ClInclude>
+    <ClInclude Include="combinator.h">
+      <Filter>solver\combinator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
