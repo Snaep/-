@@ -13,12 +13,12 @@ static const RULE rules[] = {
 	&rule6,
 	&rule7,
 	&rule8,
-	&rule9,
-	&rule10,
-	&rule11,
 	&rule12,
 	&rule13,
-	&rule14
+	&rule14,
+	/*&rule12,
+	&rule13,
+	&rule14*/
 };
 
 //------------------------------------------------

@@ -1,10 +1,10 @@
 #include "rules.h"
 
 //naked pair col
-int rule4( struct Sudoku* sud, unsigned int x, unsigned int y ) 
+int rule4 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 {
 	unsigned int i, j, changed;
-	SudokuCell out, temp, temp2 = 0;
+	SudokuCell out = { 0 }, temp = { 0 }, temp2 = { 0 };
 
 	if ( POPCNT ( sud->grid[y][x], sud->length ) != 2 )return 0;
 
@@ -24,14 +24,14 @@ int rule4( struct Sudoku* sud, unsigned int x, unsigned int y )
 					AND ( sud->grid[y][x], sud->grid[i][x], temp, sud->length );
 					OR ( temp, temp2, temp, sud->length );
 
-					INV ( sud->grid[y][x], sud->grid[j][x],sud->length );
+					INV ( sud->grid[y][x], sud->grid[j][x], sud->length );
 				}
 			}
 			return 1;
 		}
 	}
 	return 0;
-
+}
 
 
 /*	unsigned int i, j, changed;
@@ -90,11 +90,11 @@ int rule4( struct Sudoku* sud, unsigned int x, unsigned int y )
 		}
 
 		return changed;
-		}*/
+		}
 	}
 
 	return changed;
-}/*{
+}{
 	unsigned int i, j, changed;
 	if( __popcnt64( sud->grid[y][x] ) != 2 ) return 0;
 

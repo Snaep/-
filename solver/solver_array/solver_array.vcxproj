@@ -31,6 +31,7 @@
     <ClCompile Include="rule7.c" />
     <ClCompile Include="rule8.c" />
     <ClCompile Include="rule9.c" />
+    <ClCompile Include="rulesingle.c" />
     <ClCompile Include="sudoku.c" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +89,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Marco\Source\Repos\-\solver\solver_array;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

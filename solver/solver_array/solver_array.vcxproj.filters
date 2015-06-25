@@ -108,6 +108,9 @@
     <ClCompile Include="help_functions.c">
       <Filter>solver\rules\implementations</Filter>
     </ClCompile>
+    <ClCompile Include="rulesingle.c">
+      <Filter>solver\rules\implementations\Single Possibility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\solver\stopwatch.h">

@@ -4,7 +4,7 @@
 int rule7( struct Sudoku* sud, unsigned int x, unsigned int y ) {
 	{
 		unsigned int i, j;
-		SudokuCell candidate, neighbourhood, temp;
+		SudokuCell candidate = { 0 }, neighbourhood = { 0 }, temp = { 0 };
 
 		for ( i = 0; i < sud->length; i++ )
 		{

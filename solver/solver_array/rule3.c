@@ -49,7 +49,7 @@ int rule3 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 	}
 	}*/
 	unsigned int i, j,changed;
-	SudokuCell out,temp,temp2=0;
+	SudokuCell out = { 0 }, temp = { 0 }, temp2 = { 0 };
 
 	if ( POPCNT ( sud->grid[y][x], sud->length ) != 2 )return 0;
 

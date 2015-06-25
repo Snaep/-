@@ -2,7 +2,7 @@
 
 //fuk dis
 int rule11 ( struct Sudoku* sud, unsigned int x, unsigned int y )
-{
+{/*
 	unsigned int i, changed, subset, ctPartners;
 	unsigned int partners[5];
 
@@ -30,6 +30,6 @@ int rule11 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 
 		return changed;
 	}
-
+	*/
 	return 0;
 }

@@ -3,7 +3,7 @@
 //Hidden Pairs in Boxen
 int rule8( struct Sudoku* sud, unsigned int x, unsigned int y ) {
 	unsigned int i, j;
-	SudokuCell candidate, neighbourhood,temp,temp2;
+	SudokuCell candidate = { 0 }, neighbourhood = { 0 }, temp = { 0 }, temp2 = { 0 };
 
 	for( i = 0; i < sud->length; i++ ) {
 

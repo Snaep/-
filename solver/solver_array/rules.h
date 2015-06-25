@@ -2,13 +2,14 @@
 #define RULES_H
 
 #include "sudoku.h"
+#include"..\\solver\combinator.h"
 
 typedef int( *RULE )( struct Sudoku* sud, unsigned int x, unsigned int y );
 
 //--------------------------------------------------------------
 //add rules here
 
-
+int rulesingle ( struct Sudoku* sud, unsigned int x, unsigned int y );
 int rule0( struct Sudoku* sud, unsigned int x, unsigned int y );
 int rule1( struct Sudoku* sud, unsigned int x, unsigned int y );
 int rule2( struct Sudoku* sud, unsigned int x, unsigned int y );

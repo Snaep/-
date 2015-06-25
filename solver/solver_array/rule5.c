@@ -3,8 +3,8 @@
 //Naked pairs box
 int rule5 ( struct Sudoku* sud, unsigned int x, unsigned int y )
 {
-	unsigned int i, changed;
-	SudokuCell temp, temp2, temp3 = { 0 };
+	unsigned int i, changed,j;
+	SudokuCell temp = { 0 }, temp2 = { 0 }, temp3 = { 0 };
 	if ( POPCNT ( sud->grid[y][x], sud->length ) == 2 )
 	{
 		for ( i = 0; i < sud->length; i++ )
