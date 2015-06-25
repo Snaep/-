@@ -5,7 +5,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LocalDebuggerCommandArguments>-st0 -st1 -st2 -st3 -st4 -st5 -st6 -st7 -st8 -par=0 -ti -sud=Sudokus\hard01.sud</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>-st0 -st1 -st2 -st3 -st4 -st5 -st6 -st7 -st8 -st9 -st10 -st11 -par=0 -ti -sud=Sudokus\hard01.sud</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>
